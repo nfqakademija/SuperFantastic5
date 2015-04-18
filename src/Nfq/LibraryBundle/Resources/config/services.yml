@@ -1,0 +1,6 @@
+services:
+   book_parser:
+        class: Nfq\LibraryBundle\BookParser
+        arguments: ["@google_api"]
+   google_api:
+        class: Nfq\LibraryBundle\Providers\GoogleBooksAPI
