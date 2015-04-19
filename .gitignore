@@ -12,7 +12,3 @@
 
 .idea/encodings.xml
 .idea/nfqakademija.iml
-*.php
-src/Nfq/LibraryBundle/BookParser.php
-src/Nfq/LibraryBundle/NfqLibraryBundle.php
-src/Nfq/LibraryBundle/DependencyInjection/NfqLibraryExtension.php
