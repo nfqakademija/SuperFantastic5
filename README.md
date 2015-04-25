@@ -6,7 +6,8 @@ nfqakademija
 ============
 DONE:
 
-*Books by ISBN
+* Books by ISBN
+* Doctrine Fixtures Bundle fills database with test data
 
 ============
 A Symfony project created on April 16, 2015, 3:19 pm.
