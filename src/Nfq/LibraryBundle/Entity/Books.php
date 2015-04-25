@@ -91,4 +91,60 @@ class Books
     {
         return $this->ownerId;
     }
+    /**
+     * @var \Nfq\LibraryBundle\Entity\Descriptions
+     */
+    private $description;
+
+    /**
+     * @var \Nfq\LibraryBundle\Entity\Users
+     */
+    private $owner;
+
+
+    /**
+     * Set description
+     *
+     * @param \Nfq\LibraryBundle\Entity\Descriptions $description
+     * @return Books
+     */
+    public function setDescription(\Nfq\LibraryBundle\Entity\Descriptions $description = null)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return \Nfq\LibraryBundle\Entity\Descriptions 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param \Nfq\LibraryBundle\Entity\Users $owner
+     * @return Books
+     */
+    public function setOwner(\Nfq\LibraryBundle\Entity\Users $owner = null)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return \Nfq\LibraryBundle\Entity\Users 
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
 }

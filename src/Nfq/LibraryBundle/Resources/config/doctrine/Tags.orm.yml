@@ -1,0 +1,39 @@
+Nfq\LibraryBundle\Entity\Tags:
+    type: entity
+    table: tags
+    uniqueConstraints:
+        id_UNIQUE:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        tag:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+    manyToMany:
+        description:
+            targetEntity: Descriptions
+            cascade: {  }
+            mappedBy: tag
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        user:
+            targetEntity: Users
+            cascade: {  }
+            mappedBy: tag
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

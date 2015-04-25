@@ -211,4 +211,60 @@ class Orders
     {
         return $this->returnedAt;
     }
+    /**
+     * @var \Nfq\LibraryBundle\Entity\Books
+     */
+    private $book;
+
+    /**
+     * @var \Nfq\LibraryBundle\Entity\Users
+     */
+    private $reader;
+
+
+    /**
+     * Set book
+     *
+     * @param \Nfq\LibraryBundle\Entity\Books $book
+     * @return Orders
+     */
+    public function setBook(\Nfq\LibraryBundle\Entity\Books $book = null)
+    {
+        $this->book = $book;
+
+        return $this;
+    }
+
+    /**
+     * Get book
+     *
+     * @return \Nfq\LibraryBundle\Entity\Books 
+     */
+    public function getBook()
+    {
+        return $this->book;
+    }
+
+    /**
+     * Set reader
+     *
+     * @param \Nfq\LibraryBundle\Entity\Users $reader
+     * @return Orders
+     */
+    public function setReader(\Nfq\LibraryBundle\Entity\Users $reader = null)
+    {
+        $this->reader = $reader;
+
+        return $this;
+    }
+
+    /**
+     * Get reader
+     *
+     * @return \Nfq\LibraryBundle\Entity\Users 
+     */
+    public function getReader()
+    {
+        return $this->reader;
+    }
 }

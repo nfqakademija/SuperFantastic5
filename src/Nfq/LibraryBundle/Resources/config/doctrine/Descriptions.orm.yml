@@ -1,0 +1,90 @@
+Nfq\LibraryBundle\Entity\Descriptions:
+    type: entity
+    table: descriptions
+    uniqueConstraints:
+        id_UNIQUE:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        author:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        title:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        coverUrl:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            column: cover_url
+        language:
+            type: string
+            nullable: true
+            length: 2
+            fixed: false
+            comment: ''
+        description:
+            type: string
+            nullable: true
+            length: 1024
+            fixed: false
+            comment: ''
+        publisher:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        year:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            comment: ''
+        pageNo:
+            type: smallint
+            nullable: true
+            unsigned: true
+            comment: ''
+            column: page_no
+        isbn:
+            type: string
+            nullable: true
+            length: 13
+            fixed: false
+            comment: ''
+    manyToMany:
+        tag:
+            targetEntity: Tags
+            cascade: {  }
+            mappedBy: null
+            inversedBy: description
+            joinTable:
+                name: book_tags
+                joinColumns:
+                    -
+                        name: description_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: tag_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

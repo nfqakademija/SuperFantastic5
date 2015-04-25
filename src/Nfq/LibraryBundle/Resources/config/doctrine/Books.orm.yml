@@ -1,0 +1,43 @@
+Nfq\LibraryBundle\Entity\Books:
+    type: entity
+    table: books
+    indexes:
+        fk_Books_Descriptions_idx:
+            columns:
+                - description_id
+        fk_Books_Users_idx:
+            columns:
+                - owner_id
+    uniqueConstraints:
+        id_UNIQUE:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        description:
+            targetEntity: Descriptions
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                description_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        owner:
+            targetEntity: Users
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                owner_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
