@@ -7,93 +7,106 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Descriptions
  *
- * @ORM\Table()
+ * @ORM\Table(name="descriptions", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})})
  * @ORM\Entity
  */
 class Descriptions
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\Column(name="author", type="string", length=255, nullable=true)
      */
     private $author;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cover_url", type="string", length=255)
+     * @ORM\Column(name="cover_url", type="string", length=255, nullable=true)
      */
     private $coverUrl;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="language", type="string", length=2)
+     * @ORM\Column(name="language", type="string", length=2, nullable=true)
      */
     private $language;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=1000)
+     * @ORM\Column(name="description", type="string", length=1024, nullable=true)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="publisher", type="string", length=255)
+     * @ORM\Column(name="publisher", type="string", length=255, nullable=true)
      */
     private $publisher;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="year", type="date")
+     * @ORM\Column(name="year", type="date", nullable=true)
      */
     private $year;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="page_no", type="smallint")
+     * @ORM\Column(name="page_no", type="smallint", nullable=true)
      */
     private $pageNo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="isbn", type="string", length=13)
+     * @ORM\Column(name="isbn", type="string", length=13, nullable=true)
      */
     private $isbn;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
 
     /**
-     * Get id
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @return integer 
+     * @ORM\ManyToMany(targetEntity="Nfq\LibraryBundle\Entity\Tags", inversedBy="description")
+     * @ORM\JoinTable(name="book_tags",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="description_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *   }
+     * )
      */
-    public function getId()
+    private $tag;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
     {
-        return $this->id;
+        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
     /**
      * Set author
@@ -111,7 +124,7 @@ class Descriptions
     /**
      * Get author
      *
-     * @return string 
+     * @return string
      */
     public function getAuthor()
     {
@@ -134,7 +147,7 @@ class Descriptions
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -157,7 +170,7 @@ class Descriptions
     /**
      * Get coverUrl
      *
-     * @return string 
+     * @return string
      */
     public function getCoverUrl()
     {
@@ -180,7 +193,7 @@ class Descriptions
     /**
      * Get language
      *
-     * @return string 
+     * @return string
      */
     public function getLanguage()
     {
@@ -203,7 +216,7 @@ class Descriptions
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -226,7 +239,7 @@ class Descriptions
     /**
      * Get publisher
      *
-     * @return string 
+     * @return string
      */
     public function getPublisher()
     {
@@ -249,7 +262,7 @@ class Descriptions
     /**
      * Get year
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getYear()
     {
@@ -272,7 +285,7 @@ class Descriptions
     /**
      * Get pageNo
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageNo()
     {
@@ -295,23 +308,28 @@ class Descriptions
     /**
      * Get isbn
      *
-     * @return string 
+     * @return string
      */
     public function getIsbn()
     {
         return $this->isbn;
     }
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $tag;
-
     /**
      * Constructor
      */
-    public function __construct()
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
     {
-        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->id;
     }
 
     /**
@@ -340,7 +358,7 @@ class Descriptions
     /**
      * Get tag
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTag()
     {

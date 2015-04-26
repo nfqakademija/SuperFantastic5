@@ -7,118 +7,69 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Orders
  *
- * @ORM\Table()
+ * @ORM\Table(name="orders", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_Orders_Users1_idx", columns={"reader_id"}), @ORM\Index(name="fk_Orders_Books1_idx", columns={"book_id"})})
  * @ORM\Entity
  */
 class Orders
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="book_id", type="integer")
-     */
-    private $bookId;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="reader_id", type="integer")
-     */
-    private $readerId;
-
-    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="reserved_at", type="datetime")
+     * @ORM\Column(name="reserved_at", type="date", nullable=true)
      */
     private $reservedAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="taken_at", type="datetime")
+     * @ORM\Column(name="taken_at", type="date", nullable=true)
      */
     private $takenAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="to_return_at", type="datetime")
+     * @ORM\Column(name="to_return_at", type="date", nullable=true)
      */
     private $toReturnAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="returned_at", type="datetime")
+     * @ORM\Column(name="returned_at", type="date", nullable=true)
      */
     private $returnedAt;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
 
     /**
-     * Get id
+     * @var \Nfq\LibraryBundle\Entity\Books
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Nfq\LibraryBundle\Entity\Books")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="book_id", referencedColumnName="id")
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $book;
 
     /**
-     * Set bookId
+     * @var \Nfq\LibraryBundle\Entity\Users
      *
-     * @param integer $bookId
-     * @return Orders
+     * @ORM\ManyToOne(targetEntity="Nfq\LibraryBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="reader_id", referencedColumnName="id")
+     * })
      */
-    public function setBookId($bookId)
-    {
-        $this->bookId = $bookId;
+    private $reader;
 
-        return $this;
-    }
 
-    /**
-     * Get bookId
-     *
-     * @return integer 
-     */
-    public function getBookId()
-    {
-        return $this->bookId;
-    }
-
-    /**
-     * Set readerId
-     *
-     * @param integer $readerId
-     * @return Orders
-     */
-    public function setReaderId($readerId)
-    {
-        $this->readerId = $readerId;
-
-        return $this;
-    }
-
-    /**
-     * Get readerId
-     *
-     * @return integer 
-     */
-    public function getReaderId()
-    {
-        return $this->readerId;
-    }
 
     /**
      * Set reservedAt
@@ -211,6 +162,7 @@ class Orders
     {
         return $this->returnedAt;
     }
+<<<<<<< Updated upstream
     /**
      * @var \Nfq\LibraryBundle\Entity\Books
      */
@@ -221,6 +173,18 @@ class Orders
      */
     private $reader;
 
+=======
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+>>>>>>> Stashed changes
 
     /**
      * Set book

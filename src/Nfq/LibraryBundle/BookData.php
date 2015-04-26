@@ -31,7 +31,7 @@ class BookData
         $this->setYear($year);
         $this->setPageNo($pageNo);
         $this->setIsbn($isbn);
-        $this->setThumbnail($thumbnail);
+        $this->setCoverUrl($thumbnail);
     }
 
     public function setAuthor($author)
@@ -114,12 +114,12 @@ class BookData
         return $this->isbn;
     }
 
-    public function setThumbnail($thumbnail)
+    public function setCoverUrl($thumbnail)
     {
         $this->thumbnail = $thumbnail;
     }
 
-    public function getThumbnail()
+    public function getCoverUrl()
     {
         return $this->thumbnail;
     }

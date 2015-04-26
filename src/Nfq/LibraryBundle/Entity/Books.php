@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Books
  *
- * @ORM\Table()
+ * @ORM\Table(name="books", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_Books_Descriptions_idx", columns={"description_id"}), @ORM\Index(name="fk_Books_Users_idx", columns={"owner_id"})})
  * @ORM\Entity
  */
 class Books
@@ -17,23 +17,30 @@ class Books
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var integer
+     * @var \Nfq\LibraryBundle\Entity\Users
      *
-     * @ORM\Column(name="description_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Nfq\LibraryBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
+     * })
      */
-    private $descriptionId;
+    private $owner;
 
     /**
-     * @var integer
+     * @var \Nfq\LibraryBundle\Entity\Descriptions
      *
-     * @ORM\Column(name="owner_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Nfq\LibraryBundle\Entity\Descriptions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="description_id", referencedColumnName="id")
+     * })
      */
-    private $ownerId;
+    private $description;
+
 
 
     /**
@@ -47,49 +54,49 @@ class Books
     }
 
     /**
-     * Set descriptionId
+     * Set owner
      *
-     * @param integer $descriptionId
+     * @param \Nfq\LibraryBundle\Entity\Users $owner
      * @return Books
      */
-    public function setDescriptionId($descriptionId)
+    public function setOwner(\Nfq\LibraryBundle\Entity\Users $owner = null)
     {
-        $this->descriptionId = $descriptionId;
+        $this->owner = $owner;
 
         return $this;
     }
 
     /**
-     * Get descriptionId
+     * Get owner
      *
-     * @return integer 
+     * @return \Nfq\LibraryBundle\Entity\Users 
      */
-    public function getDescriptionId()
+    public function getOwner()
     {
-        return $this->descriptionId;
+        return $this->owner;
     }
 
     /**
-     * Set ownerId
+     * Set description
      *
-     * @param integer $ownerId
+     * @param \Nfq\LibraryBundle\Entity\Descriptions $description
      * @return Books
      */
-    public function setOwnerId($ownerId)
+    public function setDescription(\Nfq\LibraryBundle\Entity\Descriptions $description = null)
     {
-        $this->ownerId = $ownerId;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get ownerId
+     * Get description
      *
-     * @return integer 
+     * @return \Nfq\LibraryBundle\Entity\Descriptions 
      */
-    public function getOwnerId()
+    public function getDescription()
     {
-        return $this->ownerId;
+        return $this->description;
     }
     /**
      * @var \Nfq\LibraryBundle\Entity\Descriptions

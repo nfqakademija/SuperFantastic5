@@ -1,0 +1,73 @@
+<?php
+
+namespace Nfq\LibraryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Orders
+ *
+ * @ORM\Table(name="orders", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_Orders_Users1_idx", columns={"reader_id"}), @ORM\Index(name="fk_Orders_Books1_idx", columns={"book_id"})})
+ * @ORM\Entity
+ */
+class Orders
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="reserved_at", type="date", nullable=true)
+     */
+    private $reservedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="taken_at", type="date", nullable=true)
+     */
+    private $takenAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="to_return_at", type="date", nullable=true)
+     */
+    private $toReturnAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="returned_at", type="date", nullable=true)
+     */
+    private $returnedAt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Nfq\LibraryBundle\Entity\Books
+     *
+     * @ORM\ManyToOne(targetEntity="Nfq\LibraryBundle\Entity\Books")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="book_id", referencedColumnName="id")
+     * })
+     */
+    private $book;
+
+    /**
+     * @var \Nfq\LibraryBundle\Entity\Users
+     *
+     * @ORM\ManyToOne(targetEntity="Nfq\LibraryBundle\Entity\Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="reader_id", referencedColumnName="id")
+     * })
+     */
+    private $reader;
+
+
+}

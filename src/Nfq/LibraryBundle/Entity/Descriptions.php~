@@ -1,0 +1,110 @@
+<?php
+
+namespace Nfq\LibraryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Descriptions
+ *
+ * @ORM\Table(name="descriptions", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})})
+ * @ORM\Entity
+ */
+class Descriptions
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=255, nullable=true)
+     */
+    private $author;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cover_url", type="string", length=255, nullable=true)
+     */
+    private $coverUrl;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="language", type="string", length=2, nullable=true)
+     */
+    private $language;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=1024, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="publisher", type="string", length=255, nullable=true)
+     */
+    private $publisher;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="year", type="date", nullable=true)
+     */
+    private $year;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="page_no", type="smallint", nullable=true)
+     */
+    private $pageNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isbn", type="string", length=13, nullable=true)
+     */
+    private $isbn;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Nfq\LibraryBundle\Entity\Tags", inversedBy="description")
+     * @ORM\JoinTable(name="book_tags",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="description_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $tag;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

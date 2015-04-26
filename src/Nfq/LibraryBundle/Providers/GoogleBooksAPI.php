@@ -23,10 +23,26 @@ class GoogleBooksAPI implements BookInterface
         $title = $data['items'][0]['volumeInfo']['title'];
         $language = $data['items'][0]['volumeInfo']['language'];
         $description = $data['items'][0]['volumeInfo']['description'];
-        $publisher = $data['items'][0]['volumeInfo']['publisher'];
+        if (isset($data['items'][0]['volumeInfo']['publisher'])) {
+            $publisher = $data['items'][0]['volumeInfo']['publisher'];
+        } else
+            $publisher = "";
         $year = $data['items'][0]['volumeInfo']['publishedDate'];
         $pageNo = $data['items'][0]['volumeInfo']['pageCount'];
-        $thumbnail = $data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+        if (isset($data['items'][0]['volumeInfo']['imageLinks']['thumbnail']))
+        {
+            $thumbnail = $data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+        }
+        else
+        {
+            $thumbnail = "https://i.warosu.org/data/lit/img/0056/69/1414915243686.jpg";
+        }
+        /*  try {
+              $thumbnail = $data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+          } catch (Exception $e) {
+              $thumbnail = "https://i.warosu.org/data/lit/img/0056/69/1414915243686.jpg";
+          }*/
+
 
         /*echo $author ."<br>".$title."<br>".$language."<br>".$description."<br>"
             .$publisher."<br>".$year."<br>".$page."<br>".$thumbnail;*/
