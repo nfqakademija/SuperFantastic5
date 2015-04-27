@@ -11,5 +11,5 @@
 /vendor/
 /web/bundles/
 
-.idea/encodings.xml
-.idea/nfqakademija.iml
+/.idea/
+/nbproject/
