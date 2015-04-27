@@ -7,106 +7,103 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Descriptions
  *
- * @ORM\Table(name="descriptions", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})})
+ * @ORM\Table()
  * @ORM\Entity
  */
 class Descriptions
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="author", type="string", length=255, nullable=true)
+     * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cover_url", type="string", length=255, nullable=true)
+     * @ORM\Column(name="cover_url", type="string", length=255)
      */
     private $coverUrl;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="language", type="string", length=2, nullable=true)
+     * @ORM\Column(name="language", type="string", length=2)
      */
     private $language;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=1024, nullable=true)
+     * @ORM\Column(name="description", type="string", length=1000)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="publisher", type="string", length=255, nullable=true)
+     * @ORM\Column(name="publisher", type="string", length=255)
      */
     private $publisher;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="year", type="date", nullable=true)
+     * @ORM\Column(name="year", type="date")
      */
     private $year;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="page_no", type="smallint", nullable=true)
+     * @ORM\Column(name="page_no", type="smallint")
      */
     private $pageNo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="isbn", type="string", length=13, nullable=true)
+     * @ORM\Column(name="isbn", type="string", length=13)
      */
     private $isbn;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $takenCount;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Nfq\LibraryBundle\Entity\Tags", inversedBy="description")
-     * @ORM\JoinTable(name="book_tags",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="description_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
-     *   }
-     * )
+     * @var \DateTime
      */
-    private $tag;
+    private $addedAt;
+
 
     /**
-     * Constructor
+     * Get id
+     *
+     * @return integer
      */
-    public function __construct()
+    public function getId()
     {
-        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->id;
     }
-
 
     /**
      * Set author
@@ -318,18 +315,14 @@ class Descriptions
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
+    private $tag;
+
     /**
      * Constructor
      */
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -363,5 +356,51 @@ class Descriptions
     public function getTag()
     {
         return $this->tag;
+    }
+
+    /**
+     * Set takenCount
+     *
+     * @param integer $takenCount
+     * @return Descriptions
+     */
+    public function setTakenCount($takenCount)
+    {
+        $this->takenCount = $takenCount;
+
+        return $this;
+    }
+
+    /**
+     * Get takenCount
+     *
+     * @return integer
+     */
+    public function getTakenCount()
+    {
+        return $this->takenCount;
+    }
+
+    /**
+     * Set addedAt
+     *
+     * @param \DateTime $addedAt
+     * @return Descriptions
+     */
+    public function setAddedAt($addedAt)
+    {
+        $this->addedAt = $addedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get addedAt
+     *
+     * @return \DateTime
+     */
+    public function getAddedAt()
+    {
+        return $this->addedAt;
     }
 }

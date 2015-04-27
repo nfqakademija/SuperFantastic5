@@ -16,36 +16,50 @@ class GoogleBooksAPI implements BookInterface
     public static function getBookInfo($isbn)
     {
         $apiUrl = "https://www.googleapis.com/books/v1/volumes?q=isbn:";
-        $page = file_get_contents($apiUrl . $isbn);
+        $apiKey = "&?key=AIzaSyC-wJHLbDUHct-TbRwXv34SROicGSfRD-A";
+        $page = file_get_contents($apiUrl . $isbn . $apiKey);
         $data = json_decode($page, true);
 
-        $author = $data['items'][0]['volumeInfo']['authors'][0];
-        $title = $data['items'][0]['volumeInfo']['title'];
-        $language = $data['items'][0]['volumeInfo']['language'];
-        $description = $data['items'][0]['volumeInfo']['description'];
+        if (isset($data['items'][0]['volumeInfo']['authors'][0])) {
+            $author = $data['items'][0]['volumeInfo']['authors'][0];
+        } else {
+            $author = "";
+        }
+        if (isset($data['items'][0]['volumeInfo']['title'])) {
+            $title = $data['items'][0]['volumeInfo']['title'];
+        } else {
+            $title = "";
+        }
+        if (isset($data['items'][0]['volumeInfo']['language'])) {
+            $language = $data['items'][0]['volumeInfo']['language'];
+        } else {
+            $language = "";
+        }
+        if (isset($data['items'][0]['volumeInfo']['description'])) {
+            $description = $data['items'][0]['volumeInfo']['description'];
+        } else {
+            $description = "";
+        }
         if (isset($data['items'][0]['volumeInfo']['publisher'])) {
             $publisher = $data['items'][0]['volumeInfo']['publisher'];
-        } else
+        } else {
             $publisher = "";
-        $year = $data['items'][0]['volumeInfo']['publishedDate'];
-        $pageNo = $data['items'][0]['volumeInfo']['pageCount'];
-        if (isset($data['items'][0]['volumeInfo']['imageLinks']['thumbnail']))
-        {
-            $thumbnail = $data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
         }
-        else
-        {
+        if (isset($data['items'][0]['volumeInfo']['publishedDate'])) {
+            $year = $data['items'][0]['volumeInfo']['publishedDate'];
+        } else {
+            $year = "";
+        }
+        if (isset($data['items'][0]['volumeInfo']['pageCount'])) {
+            $pageNo = $data['items'][0]['volumeInfo']['pageCount'];
+        } else {
+            $pageNo = "";
+        }
+        if (isset($data['items'][0]['volumeInfo']['imageLinks']['thumbnail'])) {
+            $thumbnail = $data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+        } else {
             $thumbnail = "https://i.warosu.org/data/lit/img/0056/69/1414915243686.jpg";
         }
-        /*  try {
-              $thumbnail = $data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
-          } catch (Exception $e) {
-              $thumbnail = "https://i.warosu.org/data/lit/img/0056/69/1414915243686.jpg";
-          }*/
-
-
-        /*echo $author ."<br>".$title."<br>".$language."<br>".$description."<br>"
-            .$publisher."<br>".$year."<br>".$page."<br>".$thumbnail;*/
 
         return new BookData($author, $title, $language, $description, $publisher, $year, $pageNo, $isbn, $thumbnail);
     }

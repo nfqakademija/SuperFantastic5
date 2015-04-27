@@ -1,4 +1,3 @@
-#nfq_library_homepage:
-#    path:     /
-#    defaults: { _controller: NfqLibraryBundle:Homepage:index }
-
+nfq_library_homepage:
+    path:     /
+    defaults: { _controller: NfqLibraryBundle:Homepage:index }

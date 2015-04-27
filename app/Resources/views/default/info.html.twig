@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for item in books %}
+        {{ "<img src=\"" }}
+        {{ item.coverUrl }}
+        {{ "\" />" }}
+        {{ "<br>" }}
+        {{ item.author }}
+        {{ "<br>" }}
+        {{ item.title }}
+        {{ "<br>" }}
+        {{ item.language }}
+        {{ "<br>" }}
+        {{ item.pageNo }}
+        {{ "<br>" }}
+        {{ item.isbn }}
+
+    {% endfor %}
+{% endblock %}

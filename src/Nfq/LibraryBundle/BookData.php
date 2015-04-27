@@ -19,7 +19,9 @@ class BookData
     private $year;
     private $pageNo;
     private $isbn;
-    private $thumbnail;
+    private $coverUrl;
+    private $takenCount;
+    private $addedAt;
 
     public function __construct($author, $title, $language, $description, $publisher, $year, $pageNo, $isbn, $thumbnail)
     {
@@ -32,6 +34,8 @@ class BookData
         $this->setPageNo($pageNo);
         $this->setIsbn($isbn);
         $this->setCoverUrl($thumbnail);
+        $this->setTakenCount(0);
+        $this->setAddedAt(new \DateTime('now'));
     }
 
     public function setAuthor($author)
@@ -114,13 +118,33 @@ class BookData
         return $this->isbn;
     }
 
-    public function setCoverUrl($thumbnail)
+    public function setCoverUrl($coverUrl)
     {
-        $this->thumbnail = $thumbnail;
+        $this->coverUrl = $coverUrl;
     }
 
     public function getCoverUrl()
     {
-        return $this->thumbnail;
+        return $this->coverUrl;
+    }
+
+    public function setTakenCount($takenCount)
+    {
+        $this->takenCount = $takenCount;
+    }
+
+    public function getTakenCount()
+    {
+        return $this->takenCount;
+    }
+
+    public function setAddedAt($addedAt)
+    {
+        $this->addedAt = $addedAt;
+    }
+
+    public function getAddedAt()
+    {
+        return $this->addedAt;
     }
 }

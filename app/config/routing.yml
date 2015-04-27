@@ -2,9 +2,9 @@ homepage:
     resource: "@NfqLibraryBundle/Resources/config/routing.yml"
     prefix:   /
 
-book:
-    path:     /book
-    defaults: { _controller: NfqLibraryBundle:Homepage:create }
+bookinfo:
+    path:     /book/{id}
+    defaults: { _controller: NfqLibraryBundle:BookInfo:index }
 
 app:
     resource: "@AppBundle/Controller/"
