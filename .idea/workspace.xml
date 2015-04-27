@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e16fa7f-cf14-4d44-ac15-e0280f8d1eb8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Controller/HomepageController.php" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Controller/HomepageController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="1e16fa7f-cf14-4d44-ac15-e0280f8d1eb8" name="Default" comment="" />
     <ignored path="nfqakademija.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -31,8 +28,8 @@
       <file leaf-file-name="HomepageController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Nfq/LibraryBundle/Controller/HomepageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43889844" vertical-offset="85" max-vertical-offset="748">
-              <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.35111877" vertical-offset="0" max-vertical-offset="748">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -791,8 +788,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Nfq/LibraryBundle/Controller/HomepageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43889844" vertical-offset="85" max-vertical-offset="748">
-          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.35111877" vertical-offset="0" max-vertical-offset="748">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding />
         </state>
       </provider>
