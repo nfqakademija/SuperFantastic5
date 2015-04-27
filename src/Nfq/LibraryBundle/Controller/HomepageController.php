@@ -14,7 +14,7 @@ class HomepageController extends Controller
 {
     public function indexAction()
     {
-        $newBooks = $this->getNewestBooks();
+       // $newBooks = $this->getNewestBooks();
         $popularBooks = $this->getPopularBooks();
         return $this->render('default/index.html.twig', array(
             "books" => $popularBooks));

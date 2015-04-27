@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e16fa7f-cf14-4d44-ac15-e0280f8d1eb8" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Tadas\Desktop\vagrant_puphpet\nfqakademija\src\Nfq\LibraryBundle\Resources\config\doctrine\Books.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Tadas\Desktop\vagrant_puphpet\nfqakademija\src\Nfq\LibraryBundle\Resources\config\doctrine\Descriptions.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Tadas\Desktop\vagrant_puphpet\nfqakademija\src\Nfq\LibraryBundle\Resources\config\doctrine\Orders.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Tadas\Desktop\vagrant_puphpet\nfqakademija\src\Nfq\LibraryBundle\Resources\config\doctrine\Tags.orm.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Tadas\Desktop\vagrant_puphpet\nfqakademija\src\Nfq\LibraryBundle\Resources\config\doctrine\Users.orm.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/BookData.php" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/BookData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/doctrine/Books.orm.yml" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/doctrine/Books.orm.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Entity/Books.php" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Entity/Books.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/doctrine/Descriptions.orm.yml" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/doctrine/Descriptions.orm.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Entity/Descriptions.php" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Entity/Descriptions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Providers/GoogleBooksAPI.php" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Providers/GoogleBooksAPI.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Controller/HomepageController.php" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Controller/HomepageController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/DataFixtures/ORM/LoadUsersData.php" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/DataFixtures/ORM/LoadUsersData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/doctrine/Orders.orm.yml" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/doctrine/Orders.orm.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Entity/Orders.php" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Entity/Orders.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/doctrine/Tags.orm.yml" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/doctrine/Tags.orm.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Entity/Tags.php" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Entity/Tags.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/doctrine/Users.orm.yml" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/doctrine/Users.orm.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Entity/Users.php" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Entity/Users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/css/bootstrap-responsive.css" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/css/bootstrap-responsive.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/css/bootstrap-responsive.min.css" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/css/bootstrap-responsive.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/css/bootstrap.css" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/js/bootstrap.js" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/public/js/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/views/Default/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/services.yml" afterPath="$PROJECT_DIR$/src/Nfq/LibraryBundle/Resources/config/services.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nfqakademija.iws" />
@@ -58,20 +28,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HomepageController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HomepageController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Nfq/LibraryBundle/Controller/HomepageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="748">
-              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.43889844" vertical-offset="85" max-vertical-offset="748">
+              <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.112026356" vertical-offset="0" max-vertical-offset="607">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
               <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
               <folding />
             </state>
@@ -747,14 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_Nfq.zip/Nfq/LibraryBundle/Controller/HomepageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7607573" vertical-offset="102" max-vertical-offset="1054">
-          <caret line="40" column="26" selection-start-line="26" selection-start-column="13" selection-end-line="40" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Nfq/LibraryBundle/BookData.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49741825" vertical-offset="204" max-vertical-offset="2550">
@@ -819,18 +781,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Nfq/LibraryBundle/Controller/HomepageController.php">
+    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="748">
-          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+    <entry file="file://$PROJECT_DIR$/src/Nfq/LibraryBundle/Controller/HomepageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.112026356" vertical-offset="0" max-vertical-offset="607">
-          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.43889844" vertical-offset="85" max-vertical-offset="748">
+          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
           <folding />
         </state>
       </provider>
