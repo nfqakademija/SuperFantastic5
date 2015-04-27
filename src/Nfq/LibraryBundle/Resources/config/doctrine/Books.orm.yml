@@ -21,6 +21,12 @@ Nfq\LibraryBundle\Entity\Books:
             id: true
             generator:
                 strategy: IDENTITY
+    fields:
+        addedAt:
+            type: date
+            nullable: false
+            comment: ''
+            column: added_at
     manyToOne:
         description:
             targetEntity: Descriptions

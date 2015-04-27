@@ -6,63 +6,56 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Users
- *
- * @ORM\Table()
- * @ORM\Entity
  */
 class Users
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="firstname", type="string", length=255)
      */
     private $firstname;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="lastname", type="string", length=255)
      */
     private $lastname;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=254)
      */
     private $email;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=20)
      */
     private $password;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="salt", type="string", length=100)
      */
     private $salt;
 
     /**
      * @var boolean
-     *
-     * @ORM\Column(name="is_admin", type="boolean")
      */
     private $isAdmin;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tag;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -210,18 +203,6 @@ class Users
     public function getIsAdmin()
     {
         return $this->isAdmin;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tag;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

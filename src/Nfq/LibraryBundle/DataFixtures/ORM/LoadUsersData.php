@@ -111,19 +111,23 @@ class LoadUsersData implements FixtureInterface
         $bookdata = [
             [
                 'description' => 0,
-                'owner' => 1
+                'owner'       => 1,
+                'added_at'    => '2015-01-01'
             ],
             [
                 'description' => 1,
-                'owner' => 1
+                'owner'       => 1,
+                'added_at'    => '2015-01-02'
             ],
             [
                 'description' => 2,
-                'owner' => 2
+                'owner'       => 2,
+                'added_at'    => '2015-01-03'
             ],
             [
                 'description' => 3,
-                'owner' => 0
+                'owner'       => 0,
+                'added_at'    => '2015-01-04'
             ]
         ];
 
@@ -208,6 +212,7 @@ class LoadUsersData implements FixtureInterface
             $lastitem = $allbooks[count($allbooks) - 1];
             $lastitem->setDescription($alldescriptions[$book['description']]);
             $lastitem->setOwner($allusers[$book['owner']]);
+            $lastitem->setAddedAt(new \DateTime($book['added_at']));
         }
 
         $allorders = [];

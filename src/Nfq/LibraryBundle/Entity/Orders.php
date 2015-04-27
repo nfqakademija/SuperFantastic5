@@ -6,62 +6,43 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Orders
- *
- * @ORM\Table()
- * @ORM\Entity
  */
 class Orders
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="book_id", type="integer")
-     */
-    private $bookId;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="reader_id", type="integer")
-     */
-    private $readerId;
-
-    /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="reserved_at", type="datetime")
      */
     private $reservedAt;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="taken_at", type="datetime")
      */
     private $takenAt;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="to_return_at", type="datetime")
      */
     private $toReturnAt;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="returned_at", type="datetime")
      */
     private $returnedAt;
+
+    /**
+     * @var \Nfq\LibraryBundle\Entity\Books
+     */
+    private $book;
+
+    /**
+     * @var \Nfq\LibraryBundle\Entity\Users
+     */
+    private $reader;
 
 
     /**
@@ -72,52 +53,6 @@ class Orders
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set bookId
-     *
-     * @param integer $bookId
-     * @return Orders
-     */
-    public function setBookId($bookId)
-    {
-        $this->bookId = $bookId;
-
-        return $this;
-    }
-
-    /**
-     * Get bookId
-     *
-     * @return integer 
-     */
-    public function getBookId()
-    {
-        return $this->bookId;
-    }
-
-    /**
-     * Set readerId
-     *
-     * @param integer $readerId
-     * @return Orders
-     */
-    public function setReaderId($readerId)
-    {
-        $this->readerId = $readerId;
-
-        return $this;
-    }
-
-    /**
-     * Get readerId
-     *
-     * @return integer 
-     */
-    public function getReaderId()
-    {
-        return $this->readerId;
     }
 
     /**
@@ -211,16 +146,6 @@ class Orders
     {
         return $this->returnedAt;
     }
-    /**
-     * @var \Nfq\LibraryBundle\Entity\Books
-     */
-    private $book;
-
-    /**
-     * @var \Nfq\LibraryBundle\Entity\Users
-     */
-    private $reader;
-
 
     /**
      * Set book

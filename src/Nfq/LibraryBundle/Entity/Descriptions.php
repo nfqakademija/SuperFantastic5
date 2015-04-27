@@ -6,99 +6,76 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Descriptions
- *
- * @ORM\Table()
- * @ORM\Entity
  */
 class Descriptions
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="cover_url", type="string", length=255)
      */
     private $coverUrl;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="language", type="string", length=2)
      */
     private $language;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=1000)
      */
     private $description;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="publisher", type="string", length=255)
      */
     private $publisher;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="year", type="date")
+     * @var string
      */
     private $year;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="page_no", type="smallint")
      */
     private $pageNo;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="isbn", type="string", length=13)
      */
     private $isbn;
 
     /**
-     * @var integer
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $takenCount;
+    private $tag;
 
     /**
-     * @var \DateTime
+     * Constructor
      */
-    private $addedAt;
-
+    public function __construct()
+    {
+        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -121,7 +98,7 @@ class Descriptions
     /**
      * Get author
      *
-     * @return string
+     * @return string 
      */
     public function getAuthor()
     {
@@ -144,7 +121,7 @@ class Descriptions
     /**
      * Get title
      *
-     * @return string
+     * @return string 
      */
     public function getTitle()
     {
@@ -167,7 +144,7 @@ class Descriptions
     /**
      * Get coverUrl
      *
-     * @return string
+     * @return string 
      */
     public function getCoverUrl()
     {
@@ -190,7 +167,7 @@ class Descriptions
     /**
      * Get language
      *
-     * @return string
+     * @return string 
      */
     public function getLanguage()
     {
@@ -213,7 +190,7 @@ class Descriptions
     /**
      * Get description
      *
-     * @return string
+     * @return string 
      */
     public function getDescription()
     {
@@ -236,7 +213,7 @@ class Descriptions
     /**
      * Get publisher
      *
-     * @return string
+     * @return string 
      */
     public function getPublisher()
     {
@@ -246,7 +223,7 @@ class Descriptions
     /**
      * Set year
      *
-     * @param \DateTime $year
+     * @param string $year
      * @return Descriptions
      */
     public function setYear($year)
@@ -259,7 +236,7 @@ class Descriptions
     /**
      * Get year
      *
-     * @return \DateTime
+     * @return string 
      */
     public function getYear()
     {
@@ -282,7 +259,7 @@ class Descriptions
     /**
      * Get pageNo
      *
-     * @return integer
+     * @return integer 
      */
     public function getPageNo()
     {
@@ -305,24 +282,11 @@ class Descriptions
     /**
      * Get isbn
      *
-     * @return string
+     * @return string 
      */
     public function getIsbn()
     {
         return $this->isbn;
-    }
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tag;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -351,56 +315,10 @@ class Descriptions
     /**
      * Get tag
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getTag()
     {
         return $this->tag;
-    }
-
-    /**
-     * Set takenCount
-     *
-     * @param integer $takenCount
-     * @return Descriptions
-     */
-    public function setTakenCount($takenCount)
-    {
-        $this->takenCount = $takenCount;
-
-        return $this;
-    }
-
-    /**
-     * Get takenCount
-     *
-     * @return integer
-     */
-    public function getTakenCount()
-    {
-        return $this->takenCount;
-    }
-
-    /**
-     * Set addedAt
-     *
-     * @param \DateTime $addedAt
-     * @return Descriptions
-     */
-    public function setAddedAt($addedAt)
-    {
-        $this->addedAt = $addedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get addedAt
-     *
-     * @return \DateTime
-     */
-    public function getAddedAt()
-    {
-        return $this->addedAt;
     }
 }

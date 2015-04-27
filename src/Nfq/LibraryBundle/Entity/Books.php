@@ -6,34 +6,28 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Books
- *
- * @ORM\Table()
- * @ORM\Entity
  */
 class Books
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="description_id", type="integer")
+     * @var \DateTime
      */
-    private $descriptionId;
+    private $addedAt;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="owner_id", type="integer")
+     * @var \Nfq\LibraryBundle\Entity\Descriptions
      */
-    private $ownerId;
+    private $description;
+
+    /**
+     * @var \Nfq\LibraryBundle\Entity\Users
+     */
+    private $owner;
 
 
     /**
@@ -47,60 +41,27 @@ class Books
     }
 
     /**
-     * Set descriptionId
+     * Set addedAt
      *
-     * @param integer $descriptionId
+     * @param \DateTime $addedAt
      * @return Books
      */
-    public function setDescriptionId($descriptionId)
+    public function setAddedAt($addedAt)
     {
-        $this->descriptionId = $descriptionId;
+        $this->addedAt = $addedAt;
 
         return $this;
     }
 
     /**
-     * Get descriptionId
+     * Get addedAt
      *
-     * @return integer 
+     * @return \DateTime 
      */
-    public function getDescriptionId()
+    public function getAddedAt()
     {
-        return $this->descriptionId;
+        return $this->addedAt;
     }
-
-    /**
-     * Set ownerId
-     *
-     * @param integer $ownerId
-     * @return Books
-     */
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-
-        return $this;
-    }
-
-    /**
-     * Get ownerId
-     *
-     * @return integer 
-     */
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-    /**
-     * @var \Nfq\LibraryBundle\Entity\Descriptions
-     */
-    private $description;
-
-    /**
-     * @var \Nfq\LibraryBundle\Entity\Users
-     */
-    private $owner;
-
 
     /**
      * Set description

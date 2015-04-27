@@ -6,28 +6,37 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Tags
- *
- * @ORM\Table()
- * @ORM\Entity
  */
 class Tags
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="tag", type="string", length=100)
      */
     private $tag;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $description;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $user;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->description = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -60,24 +69,6 @@ class Tags
     public function getTag()
     {
         return $this->tag;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $description;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $user;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->description = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

@@ -53,8 +53,10 @@ Nfq\LibraryBundle\Entity\Descriptions:
             fixed: false
             comment: ''
         year:
-            type: date
+            type: string
             nullable: true
+            length: 10
+            fixed: false
             comment: ''
         pageNo:
             type: smallint
@@ -68,17 +70,6 @@ Nfq\LibraryBundle\Entity\Descriptions:
             length: 13
             fixed: false
             comment: ''
-        takenCount:
-            type: integer
-            nullable: true
-            unsigned: false
-            comment: ''
-            column: taken_count
-        addedAt:
-            type: date
-            nullable: true
-            comment: ''
-            column: added_at
     manyToMany:
         tag:
             targetEntity: Tags
