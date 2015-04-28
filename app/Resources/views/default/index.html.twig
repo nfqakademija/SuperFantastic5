@@ -4,10 +4,10 @@
     {% set i = 0 %}
     {% for item in books %}
         {{ "<img src=\"" }}
-        {{ item.coverUrl }}
-        {{ "\" //>" }}
-        {{ item.author }}
-        {% set i=i+1 %}
+        {{ item.description.coverUrl }}
+        {{ "\">" }}
+        {{ item.description.author }}
+        {% set i = i+1 %}
         {% if i % 3 == 0 %}
             {{ "<br>" }}
         {% endif %}

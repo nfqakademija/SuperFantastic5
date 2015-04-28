@@ -1,3 +1,11 @@
+newBooks:
+    path:     /new
+    defaults: { _controller: NfqLibraryBundle:Homepage:newBooks }
+
+popularBooks:
+    path:     /popular
+    defaults: { _controller: NfqLibraryBundle:Homepage:popularBooks }
+
 homepage:
     resource: "@NfqLibraryBundle/Resources/config/routing.yml"
     prefix:   /
