@@ -8,6 +8,7 @@ DONE:
 
 * Books by ISBN
 * Doctrine Fixtures Bundle fills database with test data
+* New / popular books queries added 
 
 ============
 A Symfony project created on April 16, 2015, 3:19 pm.
