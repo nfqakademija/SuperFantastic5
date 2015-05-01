@@ -1,5 +1,7 @@
-nav{
-    background-color: #000000;
+body {
+    padding-top: 65px;
+    padding-bottom: 65px;
+    background-image: url("http://i.imgur.com/DV5LmTI.png");
 }
 
 .navbar .nav > li {
@@ -9,9 +11,4 @@ nav{
 .navbar-form .form-control {
     height: 34px;
     width: 320px;
-}
-
-
-.navbar-default{
-    height: 40px;
 }
