@@ -12,3 +12,20 @@ body {
     height: 34px;
     width: 320px;
 }
+
+.col-md-2 {
+    width: 45%;
+}
+
+.col-xs-2 {
+    width: 55%;
+}
+
+.image-container {
+    height: 150px;
+    width: 100%;
+}
+.img-responsive {
+    height:100%;
+    width:100%;
+}

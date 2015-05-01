@@ -2,14 +2,38 @@
 
 {% block body %}
     {% set i = 0 %}
+
+    <div class="row">
     {% for item in books %}
-        {{ "<img src=\"" }}
-        {{ item.description.coverUrl }}
-        {{ "\">" }}
-        {{ item.description.author }}
-        {% set i = i+1 %}
-        {% if i % 3 == 0 %}
-            {{ "<br>" }}
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading"></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="container image-container">
+                                <img src="{{ item.description.coverUrl }}" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <b>Author: </b>{{ item.description.author }}
+                            <b>Book: </b> <a href="/book/{{ item.description.id }}">{{ item.description.title }}</a><br>
+                            <b>ISBN: </b>{{ item.description.isbn }}<br>
+                            <b>Language: </b>{{ item.description.language }}<br>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer clearfix">
+                    <div class="pull-right">
+                        <a href="/book/{{ item.description.id }}" class="btn btn-primary">READ MORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% set i = i+1 %}
+    {% if i % 3 == 0 %}
+    <div class="row">
         {% endif %}
     {% endfor %}
+    </div>
 {% endblock %}
