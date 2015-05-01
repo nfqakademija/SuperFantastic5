@@ -2,19 +2,35 @@
 
 {% block body %}
     {% for item in books %}
-        {{ "<img src=\"" }}
-        {{ item.coverUrl }}
-        {{ "\" />" }}
-        {{ "<br>" }}
-        {{ item.author }}
-        {{ "<br>" }}
-        {{ item.title }}
-        {{ "<br>" }}
-        {{ item.language }}
-        {{ "<br>" }}
-        {{ item.pageNo }}
-        {{ "<br>" }}
-        {{ item.isbn }}
+<div class="panel panel-primary">
+    <div class="panel-heading"></div>
+        <div class="panel-body">
+        <!--  <div class="container-fluid"> -->
+            <div class="row">
+                <div class="col-md-3" >
+                    <img src="{{ item.coverUrl }}" height="300" width="250">
+                </div>
+                <div class="col-md-9">
+                    <h3>{{ item.title }}</h3>
+                    <h5>{{ item.author }}</h5>
+                    {{ "<br>" }}
+                    <p>
+                        <b>Description: </b>{{ item.description }}
+                    </p>
+                    {{ "<br>" }}
+                    <b>Language: </b>{{ item.language }}
+                    {{ "<br>" }}
+                    <b>Pages: </b>{{ item.pageNo }}<br>
+                    <b>ISBN: </b>{{ item.isbn }}
+                    <div class="pull-right">
+                        <a href="#" class="btn btn-primary">TAKE A BOOK</a>
+                        <a href="#" class="btn btn-default">Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     {% endfor %}
 {% endblock %}
