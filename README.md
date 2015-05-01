@@ -15,8 +15,8 @@ how to see it?
 
    *visit nfqakademija.dev/book/{id}   - book page <br />
    *visit nfqakademija.dev/new - newest books <br />
-    *visit nfqakademija.dev/popular - most popular boks <br />
+   *visit nfqakademija.dev/popular - most popular books <br />
 
-   !! do not forget* "composer update" <br />
+   do not forget* "composer update" <br />
 ============
 A Symfony project created on April 16, 2015, 3:19 pm.
