@@ -9,7 +9,7 @@ Nfq\LibraryBundle\Entity\Tags:
         id:
             type: integer
             nullable: false
-            unsigned: true
+            unsigned: false
             comment: ''
             id: true
             generator:

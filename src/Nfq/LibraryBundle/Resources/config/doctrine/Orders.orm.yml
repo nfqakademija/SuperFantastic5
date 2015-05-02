@@ -2,10 +2,13 @@ Nfq\LibraryBundle\Entity\Orders:
     type: entity
     table: orders
     indexes:
-        fk_Orders_Users1_idx:
+        fk_orders_reader_id:
             columns:
                 - reader_id
-        fk_Orders_Books1_idx:
+        fk_orders_description_id:
+            columns:
+                - description_id
+        fk_orders_book_id:
             columns:
                 - book_id
     uniqueConstraints:
@@ -22,11 +25,29 @@ Nfq\LibraryBundle\Entity\Orders:
             generator:
                 strategy: IDENTITY
     fields:
+        readerId:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            column: reader_id
+        descriptionId:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            column: description_id
         reservedAt:
             type: date
-            nullable: true
+            nullable: false
             comment: ''
             column: reserved_at
+        bookId:
+            type: integer
+            nullable: true
+            unsigned: true
+            comment: ''
+            column: book_id
         takenAt:
             type: date
             nullable: true
@@ -43,15 +64,6 @@ Nfq\LibraryBundle\Entity\Orders:
             comment: ''
             column: returned_at
     manyToOne:
-        book:
-            targetEntity: Books
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                book_id:
-                    referencedColumnName: id
-            orphanRemoval: false
         reader:
             targetEntity: Users
             cascade: {  }
@@ -59,6 +71,24 @@ Nfq\LibraryBundle\Entity\Orders:
             inversedBy: null
             joinColumns:
                 reader_id:
+                    referencedColumnName: id
+            orphanRemoval: true
+        description:
+            targetEntity: Descriptions
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                description_id:
+                    referencedColumnName: id
+            orphanRemoval: true
+        book:
+            targetEntity: Books
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                book_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

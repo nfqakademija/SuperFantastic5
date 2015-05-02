@@ -9,7 +9,7 @@ Nfq\LibraryBundle\Entity\Descriptions:
         id:
             type: integer
             nullable: false
-            unsigned: true
+            unsigned: false
             comment: ''
             id: true
             generator:
@@ -61,7 +61,7 @@ Nfq\LibraryBundle\Entity\Descriptions:
         pageNo:
             type: smallint
             nullable: true
-            unsigned: true
+            unsigned: false
             comment: ''
             column: page_no
         isbn:

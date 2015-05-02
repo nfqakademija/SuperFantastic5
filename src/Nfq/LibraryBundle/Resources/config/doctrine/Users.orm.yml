@@ -9,7 +9,7 @@ Nfq\LibraryBundle\Entity\Users:
         id:
             type: integer
             nullable: false
-            unsigned: true
+            unsigned: false
             comment: ''
             id: true
             generator:
@@ -49,7 +49,6 @@ Nfq\LibraryBundle\Entity\Users:
             type: boolean
             nullable: false
             comment: ''
-            default: '0'
             column: is_admin
     manyToMany:
         tag:

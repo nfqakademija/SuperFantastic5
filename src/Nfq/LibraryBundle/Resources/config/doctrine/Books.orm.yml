@@ -2,12 +2,12 @@ Nfq\LibraryBundle\Entity\Books:
     type: entity
     table: books
     indexes:
-        fk_Books_Descriptions_idx:
-            columns:
-                - description_id
-        fk_Books_Users_idx:
+        fk_books_owner_id:
             columns:
                 - owner_id
+        fk_books_description_id:
+            columns:
+                - description_id
     uniqueConstraints:
         id_UNIQUE:
             columns:
@@ -28,15 +28,6 @@ Nfq\LibraryBundle\Entity\Books:
             comment: ''
             column: added_at
     manyToOne:
-        description:
-            targetEntity: Descriptions
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                description_id:
-                    referencedColumnName: id
-            orphanRemoval: false
         owner:
             targetEntity: Users
             cascade: {  }
@@ -44,6 +35,15 @@ Nfq\LibraryBundle\Entity\Books:
             inversedBy: null
             joinColumns:
                 owner_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        description:
+            targetEntity: Descriptions
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                description_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -117,58 +117,94 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
         $bookdata = [
             [
                 'description' => 0,
-                'owner'       => 1,
+                'owner'       => 0,
                 'added_at'    => '2015-01-01'
             ],
             [
                 'description' => 1,
-                'owner'       => 1,
+                'owner'       => 0,
                 'added_at'    => '2015-01-02'
+            ],
+            [
+                'description' => 1,
+                'owner'       => 1,
+                'added_at'    => '2015-01-03'
             ],
             [
                 'description' => 2,
                 'owner'       => 2,
-                'added_at'    => '2015-01-03'
+                'added_at'    => '2015-01-04'
             ],
             [
                 'description' => 3,
                 'owner'       => 0,
-                'added_at'    => '2015-01-04'
+                'added_at'    => '2015-01-05'
             ]
         ];
 
         $orderdata = [
             [
-                'book' => 0,
                 'reader' => 0,
+                'description' => 0,
                 'reservedat' => '2015-01-01',
+                'book' => 0,
                 'takenat' => '2015-01-02',
                 'toreturnat' => '2015-01-03',
                 'returnedat' => '2015-01-04'
             ],
             [
-                'book' => 1,
                 'reader' => 1,
+                'description' => 0,
+                'reservedat' => '2015-01-03',
+                'book' => null,
+                'takenat' => '0000-01-01',
+                'toreturnat' => '0000-01-01',
+                'returnedat' => '0000-01-01'
+            ],
+            [
+                'reader' => 1,
+                'description' => 1,
                 'reservedat' => '2015-01-01',
+                'book' => 1,
                 'takenat' => '2015-01-02',
                 'toreturnat' => '2015-01-03',
-                'returnedat' => '2000-01-01'
+                'returnedat' => '0000-01-01'
             ],
             [
-                'book' => 2,
                 'reader' => 2,
+                'description' => 1,
                 'reservedat' => '2015-01-01',
+                'book' => 2,
                 'takenat' => '2015-01-02',
-                'toreturnat' => '2000-01-01',
-                'returnedat' => '2000-01-01'
+                'toreturnat' => '0000-01-01',
+                'returnedat' => '0000-01-01'
             ],
             [
-                'book' => 3,
                 'reader' => 0,
+                'description' => 1,
+                'reservedat' => '2015-01-03',
+                'book' => 2,
+                'takenat' => '0000-01-01',
+                'toreturnat' => '0000-01-01',
+                'returnedat' => '0000-01-01'
+            ],
+            [
+                'reader' => 0,
+                'description' => 2,
                 'reservedat' => '2015-01-01',
-                'takenat' => '2000-01-01',
-                'toreturnat' => '2000-01-01',
-                'returnedat' => '2000-01-01'
+                'book' => 3,
+                'takenat' => '0000-01-01',
+                'toreturnat' => '0000-01-01',
+                'returnedat' => '0000-01-01'
+            ],
+            [
+                'reader' => 0,
+                'description' => 3,
+                'reservedat' => '2015-01-01',
+                'book' => 4,
+                'takenat' => '0000-01-01',
+                'toreturnat' => '0000-01-01',
+                'returnedat' => '0000-01-01'
             ]
         ];
 
@@ -225,9 +261,14 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
         foreach ($orderdata as $order) {
             $allorders[] = new Orders();
             $lastitem = $allorders[count($allorders) - 1];
-            $lastitem->setBook($allbooks[$order['book']]);
             $lastitem->setReader($allusers[$order['reader']]);
+            $lastitem->setDescription($alldescriptions[$order['description']]);
             $lastitem->setReservedAt(new \DateTime($order['reservedat']));
+            if (is_null($order['book'])){
+                $lastitem->setBook();
+            } else {
+                $lastitem->setBook($allbooks[$order['book']]);
+            }
             $lastitem->setTakenAt(new \DateTime($order['takenat']));
             $lastitem->setToReturnAt(new \DateTime($order['toreturnat']));
             $lastitem->setReturnedAt(new \DateTime($order['returnedat']));
