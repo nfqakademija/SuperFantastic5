@@ -4,5 +4,6 @@ clc.bat and redb.bat files contain php app/console commands, that allow to clear
 
 These bat files work on Windows. You must execute the commands manually, if you are working on other operating system.
 
-* clc.bat - clear cache in product environment
-* redb.bat - recreate database
+* clc.bat - clears cache in product environment
+* ens.bat - recreates entities from mapping files
+* redb.bat - recreates database
