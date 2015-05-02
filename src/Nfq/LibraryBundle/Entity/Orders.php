@@ -192,4 +192,116 @@ class Orders
     {
         return $this->reader;
     }
+    /**
+     * @var integer
+     */
+    private $readerId;
+
+    /**
+     * @var integer
+     */
+    private $descriptionId;
+
+    /**
+     * @var integer
+     */
+    private $bookId;
+
+    /**
+     * @var \Nfq\LibraryBundle\Entity\Descriptions
+     */
+    private $description;
+
+
+    /**
+     * Set readerId
+     *
+     * @param integer $readerId
+     * @return Orders
+     */
+    public function setReaderId($readerId)
+    {
+        $this->readerId = $readerId;
+
+        return $this;
+    }
+
+    /**
+     * Get readerId
+     *
+     * @return integer 
+     */
+    public function getReaderId()
+    {
+        return $this->readerId;
+    }
+
+    /**
+     * Set descriptionId
+     *
+     * @param integer $descriptionId
+     * @return Orders
+     */
+    public function setDescriptionId($descriptionId)
+    {
+        $this->descriptionId = $descriptionId;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionId
+     *
+     * @return integer 
+     */
+    public function getDescriptionId()
+    {
+        return $this->descriptionId;
+    }
+
+    /**
+     * Set bookId
+     *
+     * @param integer $bookId
+     * @return Orders
+     */
+    public function setBookId($bookId)
+    {
+        $this->bookId = $bookId;
+
+        return $this;
+    }
+
+    /**
+     * Get bookId
+     *
+     * @return integer 
+     */
+    public function getBookId()
+    {
+        return $this->bookId;
+    }
+
+    /**
+     * Set description
+     *
+     * @param \Nfq\LibraryBundle\Entity\Descriptions $description
+     * @return Orders
+     */
+    public function setDescription(\Nfq\LibraryBundle\Entity\Descriptions $description = null)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return \Nfq\LibraryBundle\Entity\Descriptions 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 }
