@@ -9,6 +9,7 @@
 namespace Nfq\LibraryBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Nfq\LibraryBundle\Entity\Descriptions;
 
 class HomepageController extends Controller
 {
@@ -19,17 +20,14 @@ class HomepageController extends Controller
 
     public function newBooksAction()
     {
-        $booksRepo = $this->getDoctrine()->getRepository('NfqLibraryBundle:Books');
-
-        $query = $booksRepo->createQueryBuilder('b')
-            ->select('b, MIN(b.addedAt) as addedAt')
-            ->orderBy('addedAt', 'DESC')
-            ->setMaxResults(6)
-            ->groupBy('b.description')
-            ->getQuery();
-
+        $query = $this->getDoctrine()->getManager()->createQuery(
+            "SELECT b, MIN(b.addedAt) as addedAt
+            FROM NfqLibraryBundle:Books b
+            GROUP BY b.description
+            ORDER BY b.addedAt DESC
+            ");
         $bookArray = array();
-        foreach ($query->getResult() as $books) {
+        foreach ($query->setMaxResults(6)->getResult() as $books) {
             array_push($bookArray, $books[0]);
         }
 
@@ -39,17 +37,17 @@ class HomepageController extends Controller
 
     public function popularBooksAction()
     {
-        $booksRepo = $this->getDoctrine()->getRepository('NfqLibraryBundle:Orders');
-
-        $query = $booksRepo->createQueryBuilder('o')
-            ->select('o, COUNT(o.book) as bookCount')
-            ->orderBy('bookCount', 'DESC')
-            ->setMaxResults(6)
-            ->groupBy('o.book')
-            ->getQuery();
+        $query = $this->getDoctrine()->getManager()->createQuery(
+            "SELECT o, COUNT(o.book) as bookCount
+            FROM NfqLibraryBundle:Orders o
+            JOIN o.book b
+            WHERE o.book IS NOT NULL
+            GROUP BY b.description
+            ORDER BY bookCount DESC
+            ");
 
         $bookArray = array();
-        foreach ($query->getResult() as $books) {
+        foreach ($query->setMaxResults(6)->getResult() as $books) {
             array_push($bookArray, $books[0]->getBook());
         }
 
