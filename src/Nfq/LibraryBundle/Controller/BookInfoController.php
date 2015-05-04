@@ -49,7 +49,6 @@ class BookInfoController extends Controller
             AND o.takenAt is not null
             AND d.id = " . $id);
 
-
         $takenBooks = $takenBooksQuery->getResult();
         $totalBooks = $booksQuery->getResult();
         $freeBooks = $totalBooks[0][1] - $takenBooks[0][1];
@@ -88,6 +87,14 @@ class BookInfoController extends Controller
             AND o.returnedAt IS NULL");
 
         return $query->getResult();
+    }
+
+    public function testAction()
+    {
+        $query = $this->getDoctrine()->getManager()->createQuery(
+            "SELECT b.id, YEAR(b.addedAt)
+            FROM NfqLibraryBundle:Books b" );
+        var_dump($query->getResult());
     }
 
 }
