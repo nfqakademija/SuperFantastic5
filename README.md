@@ -20,7 +20,7 @@ Just add to your base url:
 * /new - newest books
 * /popular - most popular books
 * /search - to see full list of books
-* /search/some_text - to search in four fields
+* /search/&lt;some_text&gt; - to search in four fields
 
    do not forget* "composer update" before<br />
 ============
