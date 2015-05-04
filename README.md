@@ -21,8 +21,7 @@ Just add to your base url:
 * /new - newest books
 * /popular - most popular books
 * /search - to see full list of books
-* /search/{keyword} - 
-to search in four fields replace &lt;some_text&gt; with your text
+* /search/{keyword} - searches some text in four fields of description table
 * /order/{descriptionId} - add an order/reservation 
 
    do not forget* "composer update" before<br />
