@@ -6,7 +6,7 @@
         <div class="col-md-4">
             <div class="panel panel-primary">
                 <div class="panel-heading"></div>
-                <div class="panel-body">
+                <div class="panel-body fixed-panel">
                     <div class="row">
                         <div class="col-md-2">
                             <div class="container image-container">
@@ -14,7 +14,7 @@
                             </div>
                         </div>
                         <div class="col-xs-2">
-                            <b>Author: </b>{{ item.description.author }}
+                            <b>Author: </b>{{ item.description.author }}<br>
                             <b>Book: </b> <a href="/book/{{ item.description.id }}">{{ item.description.title }}</a><br>
                             <b>ISBN: </b>{{ item.description.isbn }}<br>
                             <b>Language: </b>{{ item.description.language }}<br>

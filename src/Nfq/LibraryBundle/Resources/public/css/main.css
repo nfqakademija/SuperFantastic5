@@ -29,3 +29,9 @@ body {
     height:100%;
     width:100%;
 }
+
+.fixed-panel {
+    min-height: 150px;
+    max-height: 150px;
+    overflow-y: scroll;
+}
