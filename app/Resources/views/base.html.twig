@@ -54,7 +54,9 @@
     <div class="container">
         {% block body %}{% endblock %}
     </div>
-    {% block javascripts %}{% endblock %}
+    {% javascripts '@NfqLibraryBundle/Resources/public/js/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 </div>
 <!-- Footer-->
 <div class="navbar-center navbar-default navbar-fixed-bottom">
