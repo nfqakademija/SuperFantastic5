@@ -10,6 +10,8 @@ DONE:
 * Doctrine Fixtures Bundle fills database with test data
 * New / popular books queries added
 * Searching of string in author, title, description and publisher fields
+* Added orders and reservations of books
+* Get full list of unreturned orders / reservations for a specific user
 
 how to see it?
 ---------------
@@ -21,6 +23,8 @@ Just add to your base url:
 * /search - to see full list of books
 * /search/&lt;some_text&gt; - 
 to search in four fields replace &lt;some_text&gt; with your text
+* /order/{descriptionId} - add an order/reservation 
+* /orders/{userId} - show unreturned orders of a specific user
 
    do not forget* "composer update" before<br />
 ============

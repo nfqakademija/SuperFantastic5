@@ -29,3 +29,12 @@ booklist_search:
 booklist_search_keyword:
     path:     /search/{keyword}
     defaults: { _controller: NfqLibraryBundle:BookList:search }
+
+add_order:
+    path:     /order/{descriptionId}
+    defaults: { _controller: NfqLibraryBundle:BookInfo:AddOrder }
+
+show_orders:
+    path:     /orders/{userId}
+    defaults: { _controller: NfqLibraryBundle:BookInfo:getOrders }
+
