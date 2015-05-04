@@ -21,7 +21,7 @@ class OrderManager
         $this->doctrine = $doctrine;
     }
 
-    public function addOrder($descriptionId, $userId = 1)
+    public function addOrder($descriptionId, $userId)
     {
         $bookArray = array();
 
@@ -48,20 +48,20 @@ class OrderManager
 
         //Get a free book copy from books that have already been returned
         $query3 = $this->doctrine->getManager()->createQuery(
-            "SELECT b.id
+            "SELECT distinct(b.id)
             FROM NfqLibraryBundle:Orders o
             JOIN o.book b
-            JOIN b.description d
-            WHERE o.returnedAt is not null
-            AND d.id =" . $descriptionId);
+            JOIN o.description d
+            WHERE d.id =" . $descriptionId);
 
         if (count($query2->getResult()) > 0)
-            $bookId = $query2->setMaxResults(1)->getResult()[0];
+            $bookId = $query2->setMaxResults(1)->getResult()[0][1];
         else
-            $bookId = $query3->setMaxResults(1)->getResult()[0];
+            $bookId = $query3->setMaxResults(1)->getResult()[0][1];
 
         $reservedAt = new \DateTime('now');
         $takenAt = new \DateTime('now');
+
         $toReturnAt = new \DateTime(date('Y-m-d', strtotime("+30 days")));
         $user = $this->doctrine->getManager()->getRepository('NfqLibraryBundle:Users')->find($userId);
         $book = $this->doctrine->getManager()->getRepository('NfqLibraryBundle:Books')->find($bookId);
@@ -98,7 +98,7 @@ class OrderManager
     }
 
     //add a reservation
-    public function addReservation($descriptionId, $userId = 2)
+    public function addReservation($descriptionId, $userId)
     {
         //check if a reservation like this doesn't exist already
         $query = $this->doctrine->getManager()->createQuery(
