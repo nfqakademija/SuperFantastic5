@@ -77,9 +77,9 @@ class BookInfoController extends Controller
     }
 
     //get all orders/reservations that haven't been returned by the user yet
-    public function getOrdersAction($userId)
+    public function getOrders($userId)
     {
-        $query1 = $this->getDoctrine()->getManager()->createQuery(
+        $query = $this->getDoctrine()->getManager()->createQuery(
             "SELECT d.author, d.title, d.coverUrl, o.reservedAt, o.takenAt, o.toReturnAt
             FROM NfqLibraryBundle:Orders o
             JOIN o.reader r
@@ -87,7 +87,7 @@ class BookInfoController extends Controller
             WHERE r.id =" . $userId . "
             AND o.returnedAt IS NULL");
 
-        Return $query1->getResult();
+        return $query->getResult();
     }
 
 }

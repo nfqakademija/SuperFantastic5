@@ -24,7 +24,6 @@ Just add to your base url:
 * /search/&lt;some_text&gt; - 
 to search in four fields replace &lt;some_text&gt; with your text
 * /order/{descriptionId} - add an order/reservation 
-* /orders/{userId} - show unreturned orders of a specific user
 
    do not forget* "composer update" before<br />
 ============
