@@ -48,16 +48,19 @@ class OrderManager
 
         //Get a free book copy from books that have already been returned
         $query3 = $this->doctrine->getManager()->createQuery(
-            "SELECT distinct(b.id)
+            "SELECT b.id
             FROM NfqLibraryBundle:Orders o
             JOIN o.book b
             JOIN o.description d
             WHERE d.id =" . $descriptionId);
 
+        var_dump($query2->getResult());
+        var_dump($query3->getResult());
+
         if (count($query2->getResult()) > 0)
-            $bookId = $query2->setMaxResults(1)->getResult()[0][1];
+            $bookId = $query2->setMaxResults(1)->getResult()[0];
         else
-            $bookId = $query3->setMaxResults(1)->getResult()[0][1];
+            $bookId = $query3->setMaxResults(1)->getResult()[0];
 
         $reservedAt = new \DateTime('now');
         $takenAt = new \DateTime('now');

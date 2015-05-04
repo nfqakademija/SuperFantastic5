@@ -56,7 +56,7 @@ class BookInfoController extends Controller
     }
 
     //add an order/reservation to the user by description id
-    public function addOrderAction($descriptionId, $userId = 3)
+    public function addOrderAction($descriptionId, $userId = 1)
     {
         $om = new OrderManager($this->getDoctrine());
         if ($this->getFreeBooksAmount($descriptionId) > 0) {
@@ -87,14 +87,6 @@ class BookInfoController extends Controller
             AND o.returnedAt IS NULL");
 
         return $query->getResult();
-    }
-
-    public function testAction()
-    {
-        $query = $this->getDoctrine()->getManager()->createQuery(
-            "SELECT b.id, YEAR(b.addedAt)
-            FROM NfqLibraryBundle:Books b" );
-        var_dump($query->getResult());
     }
 
 }
