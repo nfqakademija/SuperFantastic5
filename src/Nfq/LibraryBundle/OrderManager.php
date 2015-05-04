@@ -82,7 +82,6 @@ class OrderManager
             JOIN o.reader r
             JOIN o.description d
             WHERE o.returnedAt is null
-            AND o.takenAt is not null
             AND d.id =" . $descriptionId . "
             AND r.id = " . $userId);
 
@@ -107,7 +106,6 @@ class OrderManager
             JOIN o.reader r
             JOIN o.description d
             WHERE o.returnedAt is null
-            AND o.reservedAt is not null
             AND d.id =" . $descriptionId . "
             AND r.id = " . $userId);
         $user = $this->doctrine->getManager()->getRepository('NfqLibraryBundle:Users')->find($userId);
