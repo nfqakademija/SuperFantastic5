@@ -14,15 +14,14 @@ DONE:
 
 how to see it?
 ---------------
-Just load page at url:
+Just add to your base url:
 
-* http://nfqakademija.dev/book/{id} - book page
-* http://nfqakademija.dev/new - newest books
-* http://nfqakademija.dev/popular - most popular books
-* http://nfqakademija.dev/search to see full list of books
-* http://nfqakademija.dev/search/needle for search in four fields
+* /book/{id} - book page
+* /new - newest books
+* /popular - most popular books
+* /search - to see full list of books
+* /search/some_text - to search in four fields
 
    do not forget* "composer update" before<br />
 ============
-
 A Symfony project created on April 16, 2015, 3:19 pm.
