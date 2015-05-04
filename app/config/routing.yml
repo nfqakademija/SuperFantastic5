@@ -1,18 +1,6 @@
-newBooks:
-    path:     /new
-    defaults: { _controller: NfqLibraryBundle:Homepage:newBooks }
-
-popularBooks:
-    path:     /popular
-    defaults: { _controller: NfqLibraryBundle:Homepage:popularBooks }
-
 homepage:
     resource: "@NfqLibraryBundle/Resources/config/routing.yml"
     prefix:   /
-
-bookinfo:
-    path:     /book/{id}
-    defaults: { _controller: NfqLibraryBundle:BookInfo:index }
 
 app:
     resource: "@AppBundle/Controller/"

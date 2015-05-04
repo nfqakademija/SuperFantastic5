@@ -1,3 +1,15 @@
 nfq_library_homepage:
     path:     /
     defaults: { _controller: NfqLibraryBundle:Homepage:index }
+    
+newBooks:
+    path:     /new
+    defaults: { _controller: NfqLibraryBundle:Homepage:newBooks }
+
+popularBooks:
+    path:     /popular
+    defaults: { _controller: NfqLibraryBundle:Homepage:popularBooks }
+
+bookinfo:
+    path:     /book/{id}
+    defaults: { _controller: NfqLibraryBundle:BookInfo:index }
