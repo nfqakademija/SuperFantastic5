@@ -157,9 +157,9 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
                 'description' => 0,
                 'reservedat' => '2015-01-03',
                 'book' => null,
-                'takenat' => '0000-01-01',
-                'toreturnat' => '0000-01-01',
-                'returnedat' => '0000-01-01'
+                'takenat' => null,
+                'toreturnat' => null,
+                'returnedat' => null
             ],
             [
                 'reader' => 1,
@@ -168,7 +168,7 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
                 'book' => 1,
                 'takenat' => '2015-01-02',
                 'toreturnat' => '2015-01-03',
-                'returnedat' => '0000-01-01'
+                'returnedat' => null
             ],
             [
                 'reader' => 2,
@@ -176,35 +176,35 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
                 'reservedat' => '2015-01-01',
                 'book' => 2,
                 'takenat' => '2015-01-02',
-                'toreturnat' => '0000-01-01',
-                'returnedat' => '0000-01-01'
+                'toreturnat' => null,
+                'returnedat' => null
             ],
             [
                 'reader' => 0,
                 'description' => 1,
                 'reservedat' => '2015-01-03',
                 'book' => 2,
-                'takenat' => '0000-01-01',
-                'toreturnat' => '0000-01-01',
-                'returnedat' => '0000-01-01'
+                'takenat' => '2015-01-03',
+                'toreturnat' => null,
+                'returnedat' => null
             ],
             [
                 'reader' => 0,
                 'description' => 2,
                 'reservedat' => '2015-01-01',
                 'book' => 3,
-                'takenat' => '0000-01-01',
-                'toreturnat' => '0000-01-01',
-                'returnedat' => '0000-01-01'
+                'takenat' => '2015-01-04',
+                'toreturnat' => null,
+                'returnedat' => null
             ],
             [
                 'reader' => 0,
                 'description' => 3,
                 'reservedat' => '2015-01-01',
                 'book' => 4,
-                'takenat' => '0000-01-01',
-                'toreturnat' => '0000-01-01',
-                'returnedat' => '0000-01-01'
+                'takenat' => '2015-01-05',
+                'toreturnat' => null,
+                'returnedat' => null
             ]
         ];
 
@@ -264,14 +264,14 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
             $lastitem->setReader($allusers[$order['reader']]);
             $lastitem->setDescription($alldescriptions[$order['description']]);
             $lastitem->setReservedAt(new \DateTime($order['reservedat']));
-            if (is_null($order['book'])){
-                $lastitem->setBook();
-            } else {
-                $lastitem->setBook($allbooks[$order['book']]);
-            }
-            $lastitem->setTakenAt(new \DateTime($order['takenat']));
-            $lastitem->setToReturnAt(new \DateTime($order['toreturnat']));
-            $lastitem->setReturnedAt(new \DateTime($order['returnedat']));
+            $value = (is_null($order['book'])) ? null : $allbooks[$order['book']];
+            $lastitem->setBook($value);
+            $value = (is_null($order['takenat'])) ? null : new \DateTime($order['takenat']);
+            $lastitem->setTakenAt($value);
+            $value = (is_null($order['toreturnat'])) ? null : new \DateTime($order['toreturnat']);
+            $lastitem->setToReturnAt($value);
+            $value = (is_null($order['returnedat'])) ? null : new \DateTime($order['returnedat']);
+            $lastitem->setReturnedAt($value);
         }
 
         $allitems = array_merge($alltags, $allusers, $alldescriptions, $allbooks, $allorders);
