@@ -36,7 +36,8 @@ class BookListController extends Controller
 
         $bookList = $query->getResult();
         $book_data_str = print_r($bookList, true);
-        return new Response('<html><body><pre>' . $book_data_str . '</pre></body></html>');
+        //return new Response('<html><body><pre>' . $book_data_str . '</pre></body></html>');
+        return $this->render('default/search.html.twig', array('books' => $book_data_str));
     }
     
     public function searchAction($keyword = '')
@@ -56,7 +57,8 @@ class BookListController extends Controller
         //$bookList = $query->getResult();
         $bookList = $query->getArrayResult();
         $book_data_str = print_r($bookList, true);
-        return new Response('<html><body><pre>' . $book_data_str . '</pre></body></html>');
+        //return new Response('<html><body><pre>' . $book_data_str . '</pre></body></html>');
+        return $this->render('default/search.html.twig', array('books' => $bookList));
     }
 
 } 
