@@ -176,15 +176,15 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
                 'reservedat' => '2015-01-01',
                 'book' => 2,
                 'takenat' => '2015-01-02',
-                'toreturnat' => null,
-                'returnedat' => null
+                'toreturnat' => '2015-01-06',
+                'returnedat' => '2015-01-06'
             ],
             [
                 'reader' => 0,
                 'description' => 1,
                 'reservedat' => '2015-01-03',
                 'book' => 2,
-                'takenat' => '2015-01-03',
+                'takenat' => '2015-01-06',
                 'toreturnat' => null,
                 'returnedat' => null
             ],
