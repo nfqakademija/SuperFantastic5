@@ -9,8 +9,7 @@ DONE:
 * Books by ISBN
 * Doctrine Fixtures Bundle fills database with test data
 * New / popular books queries added
-* Search on partial string in author, title, description 
-  and publisher fields
+* Searching string in author, title, description and publisher fields
 
 how to see it?
 ---------------
@@ -20,7 +19,8 @@ Just add to your base url:
 * /new - newest books
 * /popular - most popular books
 * /search - to see full list of books
-* /search/&lt;some_text&gt; - to search in four fields replace &lt;some_text&gt; with your text
+* /search/&lt;some_text&gt; - 
+to search in four fields replace &lt;some_text&gt; with your text
 
    do not forget* "composer update" before<br />
 ============
