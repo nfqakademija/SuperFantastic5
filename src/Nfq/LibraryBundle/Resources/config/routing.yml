@@ -13,3 +13,19 @@ popularBooks:
 bookinfo:
     path:     /book/{id}
     defaults: { _controller: NfqLibraryBundle:BookInfo:index }
+    
+booklist_books:
+    path:     /books
+    defaults: { _controller: NfqLibraryBundle:BookList:books }
+    
+booklist_books_type:
+    path:     /books/{type}
+    defaults: { _controller: NfqLibraryBundle:BookList:books }
+
+booklist_search:
+    path:     /search
+    defaults: { _controller: NfqLibraryBundle:BookList:search }
+
+booklist_search_keyword:
+    path:     /search/{keyword}
+    defaults: { _controller: NfqLibraryBundle:BookList:search }
