@@ -9,7 +9,7 @@ DONE:
 * Books by ISBN
 * Doctrine Fixtures Bundle fills database with test data
 * New / popular books queries added
-* Searching string in author, title, description and publisher fields
+* Searching of string in author, title, description and publisher fields
 
 how to see it?
 ---------------
