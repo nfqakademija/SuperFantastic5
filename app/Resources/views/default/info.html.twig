@@ -8,7 +8,7 @@
         <!--  <div class="container-fluid"> -->
             <div class="row">
                 <div class="col-md-3" >
-                    <img src="{{ item.coverUrl }}" height="383" width="100%">
+                    <img src="{{ item.coverUrl }}" height="300" width="100%">
                 </div>
                 <div class="col-md-9">
                     <h3>{{ item.title }}</h3>
@@ -22,9 +22,13 @@
                     {{ "<br>" }}
                     <b>Pages: </b>{{ item.pageNo }}<br>
                     <b>ISBN: </b>{{ item.isbn }} <br>
-                    <b>Count:</b>{{ free }}
+                    <b>Available books: </b>{{ free }}
                     <div class="pull-right">
-                        <a href="/order/{{ item.id }}" class="btn btn-primary">TAKE A BOOK</a>
+                        {% if free == 0 %}
+                            <a href="/order/{{ item.id }}" class="btn btn-danger">RESERVE</a>
+                        {% else %}
+                            <a href="/order/{{ item.id }}" class="btn btn-primary">TAKE A BOOK</a>
+                        {% endif %}
                         <a href="#" class="btn btn-default">Go Back</a>
                     </div>
                 </div>
