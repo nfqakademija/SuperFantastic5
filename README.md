@@ -20,7 +20,7 @@ Just load page at url:
 * http://nfqakademija.dev/new - newest books
 * http://nfqakademija.dev/popular - most popular books
 * http://nfqakademija.dev/search to see full list of books
-* http://nfqakademija.dev/search/<searched string> for search in four fields
+* http://nfqakademija.dev/search/&lt;searched string&gt; for search in four fields
 
    do not forget* "composer update" before<br />
 ============
