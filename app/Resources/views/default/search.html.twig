@@ -4,29 +4,33 @@
         <h1>Not found. Try different keyword</h1>
     {% endif %}
 
+    <div class="row">
     {% for item in books %}
-        <div class="panel-body">
-            <div class="panel panel-primary">
-                <div class="panel-heading"></div>
-                <div class="panel-body">
-                    <!--  <div class="container-fluid"> -->
-                    <div class="row">
-                        <div class="col-md-2" >
-                            <img src="{{ item.coverUrl }}">
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="container image-container">
+                            <img src="{{ item.coverUrl }}" class="img-responsive">
                         </div>
-                        <div class="col-md-10">
-                            <h4>{{ item.title }}</h4>
-                            <h5>{{ item.author }}</h5>
-                            <b>Language: </b>{{ item.language }}
-                            {{ "<br>" }}
-                            <b>Pages: </b>{{ item.pageNo }}<br>
-                            <div class="pull-right">
-                                <a href="/book/{{ item.id }}" class="btn btn-primary">READ MORE</a>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <b>Author: </b>{{ item.author }}<br>
+                        <b>Book: </b> <a href="/book/{{ item.id }}">{{ item.title }}</a><br>
+                        <b>Language: </b>{{ item.language }}<br>
                     </div>
                 </div>
             </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <a href="/book/{{ item.id }}" class="btn btn-primary">READ MORE</a>
+                </div>
+            </div>
         </div>
-    {% endfor %}
+    </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}
