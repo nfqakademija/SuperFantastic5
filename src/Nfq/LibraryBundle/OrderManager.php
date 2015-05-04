@@ -54,9 +54,6 @@ class OrderManager
             JOIN o.description d
             WHERE d.id =" . $descriptionId);
 
-        var_dump($query2->getResult());
-        var_dump($query3->getResult());
-
         if (count($query2->getResult()) > 0)
             $bookId = $query2->setMaxResults(1)->getResult()[0];
         else
