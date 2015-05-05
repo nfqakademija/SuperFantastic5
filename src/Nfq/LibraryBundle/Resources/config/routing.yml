@@ -37,3 +37,11 @@ add_order:
 show_orders:
     path:     /orders/{userId}
     defaults: { _controller: NfqLibraryBundle:BookInfo:getOrders }
+
+login:
+    path: /login
+    defaults: { _controller: NfqLibraryBundle:Homepage:login }
+
+register:
+    path: /register
+    defaults: { _controller: NfqLibraryBundle:Homepage:register }
