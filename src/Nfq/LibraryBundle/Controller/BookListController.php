@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class BookListController extends Controller
 {
 
-    public function booksAction($type = 'popular')
+    public function booksAction($type_of_list = 'popular')
     {
         $books_rep = $this->getDoctrine()->getRepository('NfqLibraryBundle:Orders');
         $query_str = 'SELECT COUNT(o.id) as orderQnty, 
@@ -19,7 +19,7 @@ class BookListController extends Controller
             JOIN o.description d
             LEFT JOIN o.book b
             GROUP BY o.description';
-        switch($type){
+        switch($type_of_list){
             case 'popular':
               $query_str .= ' ORDER BY orderQnty DESC';
               break;
