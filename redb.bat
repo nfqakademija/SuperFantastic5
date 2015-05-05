@@ -1,4 +1,4 @@
-rem recreate database
+@echo Database is rebuilding
 
 php app/console doctrine:database:drop --force
 php app/console doctrine:database:create
