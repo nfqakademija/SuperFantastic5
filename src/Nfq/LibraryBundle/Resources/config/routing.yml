@@ -19,7 +19,7 @@ booklist_books:
     defaults: { _controller: NfqLibraryBundle:BookList:books }
     
 booklist_books_type:
-    path:     /books/{type}
+    path:     /books/{type_of_list}
     defaults: { _controller: NfqLibraryBundle:BookList:books }
 
 booklist_search:
