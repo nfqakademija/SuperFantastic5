@@ -3,16 +3,17 @@
 namespace Nfq\LibraryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User;
 
 /**
  * Users
  */
-class Users
+class Users extends User
 {
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -27,17 +28,17 @@ class Users
     /**
      * @var string
      */
-    private $email;
+  //  protected $email;
 
     /**
      * @var string
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      */
-    private $salt;
+    protected $salt;
 
     /**
      * @var boolean
@@ -60,7 +61,7 @@ class Users
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -83,7 +84,7 @@ class Users
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -106,7 +107,7 @@ class Users
     /**
      * Get lastname
      *
-     * @return string 
+     * @return string
      */
     public function getLastname()
     {
@@ -119,22 +120,22 @@ class Users
      * @param string $email
      * @return Users
      */
-    public function setEmail($email)
+   /* public function setEmail($email)
     {
         $this->email = $email;
 
         return $this;
-    }
+    }*/
 
     /**
      * Get email
      *
-     * @return string 
-     */
+     * @return string
+     *//*
     public function getEmail()
     {
         return $this->email;
-    }
+    }*/
 
     /**
      * Set password
@@ -152,7 +153,7 @@ class Users
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -175,7 +176,7 @@ class Users
     /**
      * Get salt
      *
-     * @return string 
+     * @return string
      */
     public function getSalt()
     {
@@ -198,7 +199,7 @@ class Users
     /**
      * Get isAdmin
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsAdmin()
     {
@@ -231,7 +232,7 @@ class Users
     /**
      * Get tag
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTag()
     {
