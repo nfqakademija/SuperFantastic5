@@ -55,14 +55,4 @@ class HomepageController extends Controller
             "books" => $bookArray));
 
     }
-
-    public function loginAction()
-    {
-        return $this->render('default/login.html.twig');
-    }
-
-    public function registerAction()
-    {
-        return $this->render('default/register.html.twig');
-    }
 }
