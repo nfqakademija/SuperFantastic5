@@ -11,6 +11,7 @@ namespace Nfq\LibraryBundle;
 
 use Nfq\LibraryBundle\Entity\Orders;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\Count;
 
 class OrderManager
 {
@@ -35,7 +36,10 @@ class OrderManager
             $var = (int)$books[1];
             array_push($bookArray, $var);
         }
-        $string = implode(',', $bookArray);
+        if (count($bookArray) < 1)
+            $string = '0';
+        else
+            $string = implode(',', $bookArray);
 
         //Get a free book copy that has not been ordered yet
         $query2 = $this->doctrine->getManager()->createQuery(
