@@ -4,3 +4,8 @@ services:
         arguments: ["@google_api"]
    google_api:
         class: Nfq\LibraryBundle\Providers\GoogleBooksAPI
+   nfq.registration.form.type:
+           class: Nfq\LibraryBundle\Form\Type\RegistrationFormType
+           arguments: [%fos_user.model.user.class%]
+           tags:
+               - { name: form.type, alias: nfq_user_registration }

@@ -32,28 +32,19 @@ class LoadUsersData implements FixtureInterface
                 'firstname'   => 'Vardenis',
                 'lastname'    => 'Pavardenis',
                 'email'       => 'admin@domain.dom',
-                'password'    => 'test',
-                'salt'        => 'whatstrangefieldissalt',
-                'is_admin'    => '1',
-                'tags'        => [0, 1]
+                'password'    => 'test'
             ],
             [
                 'firstname'   => 'Paprastas',
                 'lastname'    => 'Vartotojas',
                 'email'       => 'ordinary@domain.dom',
-                'password'    => 'tester',
-                'salt'        => 'whatstrangefieldissalt',
-                'is_admin'    => '0',
-                'tags'        => [1, 2]
+                'password'    => 'tester'
             ],
             [
                 'firstname'   => 'Kitas',
                 'lastname'    => 'Vartotojas',
                 'email'       => 'kitas@domain.dom',
-                'password'    => 'tester',
-                'salt'        => 'whatstrangefieldissalt',
-                'is_admin'    => '0',
-                'tags'        => [2, 3]
+                'password'    => 'tester'
             ]
         ];
 
@@ -223,11 +214,7 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
             $lastitem->setLastname($user['lastname']);
             $lastitem->setEmail($user['email']);
             $lastitem->setPassword($user['password']);
-            $lastitem->setSalt($user['salt']);
-            $lastitem->setIsAdmin($user['is_admin']);
-            foreach ($user['tags'] as $tagid) {
-                $lastitem->addTag($alltags[$tagid]);
-            }
+            $lastitem->setUsername($user['email']);
         }
 
         $alldescriptions = [];

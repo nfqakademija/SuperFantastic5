@@ -1,7 +1,7 @@
 nfq_library_homepage:
     path:     /
     defaults: { _controller: NfqLibraryBundle:Homepage:index }
-    
+
 newBooks:
     path:     /new
     defaults: { _controller: NfqLibraryBundle:Homepage:newBooks }

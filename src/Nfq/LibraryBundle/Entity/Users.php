@@ -2,70 +2,52 @@
 
 namespace Nfq\LibraryBundle\Entity;
 
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Users
+ * @ORM\Entity
+ * @ORM\Table(name="users")
  */
-class Users extends User
+class Users extends BaseUser
 {
     /**
-     * @var integer
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="The name is too short.",
+     *     maxMessage="The name is too long.",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     private $firstname;
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Please enter your lastname.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="The name is too short.",
+     *     maxMessage="The name is too long.",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     private $lastname;
 
-    /**
-     * @var string
-     */
-  //  protected $email;
-
-    /**
-     * @var string
-     */
-    protected $password;
-
-    /**
-     * @var string
-     */
-    protected $salt;
-
-    /**
-     * @var boolean
-     */
-    private $isAdmin;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tag;
-
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
+        parent::__construct();
     }
 
     /**
@@ -77,7 +59,6 @@ class Users extends User
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
-
         return $this;
     }
 
@@ -100,7 +81,6 @@ class Users extends User
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
-
         return $this;
     }
 
@@ -112,130 +92,5 @@ class Users extends User
     public function getLastname()
     {
         return $this->lastname;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Users
-     */
-   /* public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }*/
-
-    /**
-     * Get email
-     *
-     * @return string
-     *//*
-    public function getEmail()
-    {
-        return $this->email;
-    }*/
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return Users
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set salt
-     *
-     * @param string $salt
-     * @return Users
-     */
-    public function setSalt($salt)
-    {
-        $this->salt = $salt;
-
-        return $this;
-    }
-
-    /**
-     * Get salt
-     *
-     * @return string
-     */
-    public function getSalt()
-    {
-        return $this->salt;
-    }
-
-    /**
-     * Set isAdmin
-     *
-     * @param boolean $isAdmin
-     * @return Users
-     */
-    public function setIsAdmin($isAdmin)
-    {
-        $this->isAdmin = $isAdmin;
-
-        return $this;
-    }
-
-    /**
-     * Get isAdmin
-     *
-     * @return boolean
-     */
-    public function getIsAdmin()
-    {
-        return $this->isAdmin;
-    }
-
-    /**
-     * Add tag
-     *
-     * @param \Nfq\LibraryBundle\Entity\Tags $tag
-     * @return Users
-     */
-    public function addTag(\Nfq\LibraryBundle\Entity\Tags $tag)
-    {
-        $this->tag[] = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Remove tag
-     *
-     * @param \Nfq\LibraryBundle\Entity\Tags $tag
-     */
-    public function removeTag(\Nfq\LibraryBundle\Entity\Tags $tag)
-    {
-        $this->tag->removeElement($tag);
-    }
-
-    /**
-     * Get tag
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTag()
-    {
-        return $this->tag;
     }
 }

@@ -56,8 +56,13 @@ class BookInfoController extends Controller
     }
 
     //add an order/reservation to the user by description id
-    public function addOrderAction($descriptionId, $userId = 1)
+    public function addOrderAction($descriptionId)
     {
+        $usr = $this->get('security.context')->getToken()->getUser();
+        if (strcmp($usr, 'anon.') == 0)
+            return new Response("Please log in");
+        $userId = $usr->getId();
+
         $om = new OrderManager($this->getDoctrine());
         if ($this->getFreeBooksAmount($descriptionId) > 0) {
             $id = $om->addOrder($descriptionId, $userId);

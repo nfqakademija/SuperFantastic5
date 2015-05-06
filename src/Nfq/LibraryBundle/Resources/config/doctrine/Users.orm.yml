@@ -17,54 +17,54 @@ Nfq\LibraryBundle\Entity\Users:
     fields:
         firstname:
             type: string
-            nullable: false
+            nullable: true
             length: 255
             fixed: false
             comment: ''
         lastname:
             type: string
-            nullable: false
+            nullable: true
             length: 255
             fixed: false
             comment: ''
-        email:
-            type: string
-            nullable: false
-            length: 254
-            fixed: false
-            comment: ''
-        password:
-            type: string
-            nullable: false
-            length: 20
-            fixed: false
-            comment: ''
-        salt:
-            type: string
-            nullable: true
-            length: 100
-            fixed: false
-            comment: ''
-        isAdmin:
-            type: boolean
-            nullable: false
-            comment: ''
-            column: is_admin
-    manyToMany:
-        tag:
-            targetEntity: Tags
-            cascade: {  }
-            mappedBy: null
-            inversedBy: user
-            joinTable:
-                name: user_tags
-                joinColumns:
-                    -
-                        name: user_id
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    -
-                        name: tag_id
-                        referencedColumnName: id
-            orderBy: null
-    lifecycleCallbacks: {  }
+#        email:
+#            type: string
+#            nullable: false
+#            length: 254
+#            fixed: false
+#            comment: ''
+#        password:
+#            type: string
+#            nullable: false
+#            length: 20
+#            fixed: false
+#            comment: ''
+#        salt:
+#            type: string
+#            nullable: true
+#            length: 100
+#            fixed: false
+#            comment: ''
+#        isAdmin:
+#            type: boolean
+#            nullable: false
+#            comment: ''
+#            column: is_admin
+#    manyToMany:
+#        tag:
+#            targetEntity: Tags
+#            cascade: {  }
+#            mappedBy: null
+#            inversedBy: user
+#            joinTable:
+#                name: user_tags
+#                joinColumns:
+#                    -
+#                        name: user_id
+#                        referencedColumnName: id
+#                inverseJoinColumns:
+#                    -
+#                        name: tag_id
+#                        referencedColumnName: id
+#            orderBy: null
+#    lifecycleCallbacks: {  }
