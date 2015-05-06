@@ -12,6 +12,7 @@ DONE:
 * Searching of string in author, title, description and publisher fields
 * Added orders and reservations of books
 * Get full list of unreturned orders / reservations for a specific user
+* fosuser bundle integeration
 
 how to see it?
 ---------------
@@ -23,6 +24,8 @@ Just add to your base url:
 * /search - to see full list of books
 * /search/{keyword} - searches some text in four fields of description table
 * /order/{descriptionId} - add an order/reservation 
+* /login
+* /register
 
    do not forget* "composer update" before<br />
 ============
