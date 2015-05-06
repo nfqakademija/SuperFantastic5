@@ -1,6 +1,24 @@
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-    {{ form_widget(form) }}
+<form class="form-register" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
+    <h3>Register form for new user</h3>
+    <div class="form-signin" id="fos_user_registration_form">
+        {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'form.email'|trans } }) }}
+        {{ form_errors(form.email) }}
+
+        {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'form.username'|trans } }) }}
+        {{ form_errors(form.username) }}
+
+        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'form.password'|trans } }) }}
+        {{ form_errors(form.plainPassword.first) }}
+
+        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Repeat password'|trans } }) }}
+        {{ form_errors(form.plainPassword.second) }}
+
+        {{ form_widget(form.firstname, { 'attr': {'class': 'form-control', 'placeholder': 'Firstname'|trans } }) }}
+        {{ form_widget(form.lastname, { 'attr': {'class': 'form-control', 'placeholder': 'Lastname'|trans } }) }}
+        {{ form_rest(form) }}
+
+    </div>
     <div>
-        <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
     </div>
 </form>
