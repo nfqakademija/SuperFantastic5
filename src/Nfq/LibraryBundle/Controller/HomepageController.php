@@ -15,7 +15,7 @@ class HomepageController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('base.html.twig');
+        return $this->render('default/homepage.html.twig');
     }
 
     public function newBooksAction()
