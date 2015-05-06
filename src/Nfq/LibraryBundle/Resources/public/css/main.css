@@ -8,9 +8,9 @@ body {
     top: 6px;
 }
 
-.navbar-form .form-control {
+.navbar-form input {
     height: 34px;
-    width: 320px;
+    /*width: 320px;*/
 }
 
 .col-md-2 {
@@ -36,8 +36,15 @@ body {
     overflow-y: scroll;
 }
 
+#orders
+{
+    display: none;
+    background: grey;
+    color: #FFF;
+    padding: 50px;
+}
 /*-----------------*/
-.form-signin,form-register {
+.form-signin {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
@@ -61,7 +68,7 @@ body {
 .form-signin .form-control:focus {
     z-index: 2;
 }
-.form-signin input[type="email"] {
+.form-signin input[id="username"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
