@@ -1,5 +1,9 @@
-nfq_library_homepage:
+nfq_library_root:
     path:     /
+    defaults: { _controller: NfqLibraryBundle:Homepage:index }
+
+nfq_library_homepage:
+    path:     /home
     defaults: { _controller: NfqLibraryBundle:Homepage:index }
 
 newBooks:
