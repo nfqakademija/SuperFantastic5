@@ -5,12 +5,13 @@
     <title>{% block title %}SuperFantastic5 Project{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-    <!-- Optional theme -->
+     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
-    <!-- Latest compiled and minified JavaScript -->
+     <!-- Latest compiled and minified JavaScript -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     {% block stylesheets %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,8 +42,14 @@
                 <li><a href="/new">Newest Books</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                {% if is_granted("ROLE_USER") %}
+                    <li><a href="/profile">Logged as: <b> {{ app.user.username }}</b>. </a></li>
+                    <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                {% else %}
+                    <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                {% endif %}
             </ul>
             <form class="navbar-form navbar-left" action="/search" method="GET">
 
@@ -57,7 +64,30 @@
 <!-- MAIN -->
 <div id="wrap">
     <div class="container">
-        {% block body %}{% endblock %}
+        <div class="orders">
+            {% if is_granted("ROLE_USER") %}
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                SEE MY ORDERS
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% block body %}
+
+        {% endblock %}
     </div>
 
 </div>
