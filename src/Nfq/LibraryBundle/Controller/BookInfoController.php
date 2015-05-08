@@ -11,6 +11,7 @@ namespace Nfq\LibraryBundle\Controller;
 use Nfq\LibraryBundle\OrderManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Nfq\LibraryBundle\UserManager;
 
 class BookInfoController extends Controller
 {
@@ -58,40 +59,18 @@ class BookInfoController extends Controller
     //add an order/reservation to the user by description id
     public function addOrderAction($descriptionId)
     {
-        $usr = $this->get('security.context')->getToken()->getUser();
-        if (strcmp($usr, 'anon.') == 0)
-            return new Response("Please log in");
-        $userId = $usr->getId();
+        $um = new UserManager($this->get('security.context'));
+        $userId = $um->getUserId();
 
         $om = new OrderManager($this->getDoctrine());
         if ($this->getFreeBooksAmount($descriptionId) > 0) {
             $id = $om->addOrder($descriptionId, $userId);
-            if ($id > 0)
-                return new Response("Created new order id " . $id);
-            else
-                return new Response("An order like this already exists");
-
         } else {
             $id = $om->addReservation($descriptionId, $userId);
-            if ($id > 0)
-                return new Response("Created new reservation id " . $id);
-            else
-                return new Response("A reservation like this already exists");
         }
+        if ($id > 0)
+            return new Response("Created new order id " . $id);
+        else
+            return new Response("An order like this already exists");
     }
-
-    //get all orders/reservations that haven't been returned by the user yet
-    public function getOrders($userId)
-    {
-        $query = $this->getDoctrine()->getManager()->createQuery(
-            "SELECT d.author, d.title, d.coverUrl, o.reservedAt, o.takenAt, o.toReturnAt
-            FROM NfqLibraryBundle:Orders o
-            JOIN o.reader r
-            JOIN o.description d
-            WHERE r.id =" . $userId . "
-            AND o.returnedAt IS NULL");
-
-        return $query->getResult();
-    }
-
 }

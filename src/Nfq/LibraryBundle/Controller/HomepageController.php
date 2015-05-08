@@ -8,8 +8,9 @@
 
 namespace Nfq\LibraryBundle\Controller;
 
+use Nfq\LibraryBundle\OrderManager;
+use Nfq\LibraryBundle\UserManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Nfq\LibraryBundle\Entity\Descriptions;
 
 class HomepageController extends Controller
 {
@@ -20,6 +21,10 @@ class HomepageController extends Controller
 
     public function newBooksAction()
     {
+        $om = new OrderManager($this->getDoctrine());
+        $um = new UserManager($this->get('security.context'));
+        $userId = $um->getUserId();
+
         $query = $this->getDoctrine()->getManager()->createQuery(
             "SELECT b, MIN(b.addedAt) as addedAt
             FROM NfqLibraryBundle:Books b
@@ -32,11 +37,16 @@ class HomepageController extends Controller
         }
 
         return $this->render('default/index.html.twig', array(
-            "books" => $bookArray));
+            "books" => $bookArray,
+            "orders" => $om->getOrders($userId)));
     }
 
     public function popularBooksAction()
     {
+        $om = new OrderManager($this->getDoctrine());
+        $um = new UserManager($this->get('security.context'));
+        $userId = $um->getUserId();
+
         $query = $this->getDoctrine()->getManager()->createQuery(
             "SELECT o, COUNT(o.book) as bookCount
             FROM NfqLibraryBundle:Orders o
@@ -52,7 +62,7 @@ class HomepageController extends Controller
         }
 
         return $this->render('default/index.html.twig', array(
-            "books" => $bookArray));
-
+            "books" => $bookArray,
+            "orders" => $om->getOrders($userId)));
     }
 }

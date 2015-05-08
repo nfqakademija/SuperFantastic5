@@ -5,12 +5,12 @@
     <title>{% block title %}SuperFantastic5 Project{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     <!-- Latest compiled and minified CSS -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-     <!-- Optional theme -->
+    <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
-     <!-- Latest compiled and minified JavaScript -->
+    <!-- Latest compiled and minified JavaScript -->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     {% block stylesheets %}
@@ -53,8 +53,8 @@
             </ul>
             <form class="navbar-form navbar-left" action="/search" method="GET">
 
-                    <input type="text" size="75" id="keyword2" name="str" />
-                    <input class="btn btn-default" type="submit" id="submit" value="Search"/>
+                <input type="text" size="75" id="keyword2" name="str"/>
+                <input class="btn btn-default" type="submit" id="submit" value="Search"/>
 
             </form>
         </div>
@@ -66,23 +66,34 @@
     <div class="container">
         <div class="orders">
             {% if is_granted("ROLE_USER") %}
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                SEE MY ORDERS
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse out" role="tabpanel" aria-labelledby="headingOne">
-                        <div class="panel-body">
-                            <p>
-                            </p>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                   aria-expanded="true" aria-controls="collapseOne">
+                                    SEE MY ORDERS
+                                </a>
+
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse out" role="tabpanel"
+                             aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <p>
+                                    {% if orders is defined %}
+                                        {% for item in orders %}
+                                            {{ item.author }}
+                                            {{ "<br>" }}
+                                            {{ item.title }}
+                                            {{ "<br>" }}
+                                        {% endfor %}
+                                    {% endif %}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             {% endif %}
         </div>
         {% block body %}

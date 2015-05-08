@@ -131,4 +131,18 @@ class OrderManager
             return 0;
     }
 
+    //get all orders/reservations that haven't been returned by the user yet
+    public function getOrders($userId)
+    {
+        $query = $this->doctrine->getManager()->createQuery(
+            "SELECT d.author, d.title, d.coverUrl, o.reservedAt, o.takenAt, o.toReturnAt
+            FROM NfqLibraryBundle:Orders o
+            JOIN o.reader r
+            JOIN o.description d
+            WHERE r.id =" . $userId . "
+            AND o.returnedAt IS NULL");
+
+        return $query->getResult();
+    }
+
 } 
