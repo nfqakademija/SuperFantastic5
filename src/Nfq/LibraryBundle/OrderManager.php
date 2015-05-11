@@ -145,4 +145,48 @@ class OrderManager
         return $query->getResult();
     }
 
+    public function getUnreturnedOrders()
+    {
+        $query = $this->doctrine->getManager()->createQuery(
+            "SELECT o.id, o.toReturnAt, r.firstname, r.lastname, d.author, d.title, d.coverUrl
+            FROM NfqLibraryBundle:Orders o
+            JOIN o.reader r
+            JOIN o.description d
+            WHERE o.returnedAt IS NULL
+            AND o.takenAt IS NOT NULL
+            ORDER BY o.id");
+        return $query->getResult();
+    }
+
+    public function getFreeBooksAmount($id)
+    {
+        $booksQuery = $this->doctrine->getManager()->createQuery(
+            "SELECT COUNT(b.id)
+            FROM NfqLibraryBundle:Books b
+            JOIN b.description d
+            WHERE d.id = " . $id);
+
+        $takenBooksQuery = $this->doctrine->getManager()->createQuery(
+            "SELECT COUNT(o.id)
+            FROM NfqLibraryBundle:Orders o
+            JOIN o.description d
+            WHERE o.returnedAt is null
+            AND o.takenAt is not null
+            AND d.id = " . $id);
+
+        $takenBooks = $takenBooksQuery->getResult();
+        $totalBooks = $booksQuery->getResult();
+        $freeBooks = $totalBooks[0][1] - $takenBooks[0][1];
+        return $freeBooks;
+    }
+
+    public function setOrderReturned($id)
+    {
+        $em = $this->doctrine->getManager();
+        $order = $em->getRepository('NfqLibraryBundle:Orders')->find($id);
+        $order->setReturnedAt(new \DateTime('now'));
+        $em->flush();
+        return;
+    }
+
 } 

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    UNRETURNED ORDERS:
+    {% if unreturnedBooks is defined %}
+        <table border ="2">
+            <tr>
+                <td>Returned</td>
+                <td>Id</td>
+                <td>Firstname</td>
+                <td>Lastname</td>
+                <td>Book title</td>
+                <td>To return at</td>
+            </tr>
+            {% for item in unreturnedBooks %}
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td> {{ item.id }}
+                    <td> {{ item.firstname }} </td>
+                    <td> {{ item.lastname }} </td>
+                    <td> {{ item.title }} </td>
+                    <td> {{ item.toReturnAt|date("m/d/Y") }} </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <button type="button">Save</button>
+    {% endif %}
+{% endblock %}

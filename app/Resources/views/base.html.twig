@@ -43,7 +43,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if is_granted("ROLE_USER") %}
+
                     <li><a href="/profile">Logged as: <b> {{ app.user.username }}</b>. </a></li>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <li><a href="/admin">Admin panel</a></li>
+                    {% endif %}
                     <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
                     <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
                 {% else %}

@@ -17,8 +17,9 @@ class BookInfoController extends Controller
 {
     public function indexAction($id)
     {
+        $om = new OrderManager($this->getDoctrine());
         $books = $this->getBookInfo($id);
-        $bookAmount = $this->getFreeBooksAmount($id);
+        $bookAmount = $om->getFreeBooksAmount($id);
 
         return $this->render('default/info.html.twig', array('books' => $books, 'free' => $bookAmount));
     }
@@ -33,37 +34,16 @@ class BookInfoController extends Controller
         return $query->getResult();
     }
 
-    //get number of books that are free by description id
-    private function getFreeBooksAmount($id)
-    {
-        $booksQuery = $this->getDoctrine()->getManager()->createQuery(
-            "SELECT COUNT(b.id)
-            FROM NfqLibraryBundle:Books b
-            JOIN b.description d
-            WHERE d.id = " . $id);
-
-        $takenBooksQuery = $this->getDoctrine()->getManager()->createQuery(
-            "SELECT COUNT(o.id)
-            FROM NfqLibraryBundle:Orders o
-            JOIN o.description d
-            WHERE o.returnedAt is null
-            AND o.takenAt is not null
-            AND d.id = " . $id);
-
-        $takenBooks = $takenBooksQuery->getResult();
-        $totalBooks = $booksQuery->getResult();
-        $freeBooks = $totalBooks[0][1] - $takenBooks[0][1];
-        return $freeBooks;
-    }
-
     //add an order/reservation to the user by description id
     public function addOrderAction($descriptionId)
     {
+        $om = new OrderManager($this->getDoctrine());
+        $bookAmount = $om->getFreeBooksAmount($descriptionId);
         $um = new UserManager($this->get('security.context'));
         $userId = $um->getUserId();
 
         $om = new OrderManager($this->getDoctrine());
-        if ($this->getFreeBooksAmount($descriptionId) > 0) {
+        if ($bookAmount) {
             $id = $om->addOrder($descriptionId, $userId);
         } else {
             $id = $om->addReservation($descriptionId, $userId);

@@ -41,3 +41,7 @@ add_order:
 show_orders:
     path:     /orders/{userId}
     defaults: { _controller: NfqLibraryBundle:BookInfo:getOrders }
+
+admin_panel:
+    path:     /admin
+    defaults: { _controller: NfqLibraryBundle:Admin:Index }
