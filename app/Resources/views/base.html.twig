@@ -87,9 +87,19 @@
                                 <p>
                                     {% if orders is defined %}
                                         {% for item in orders %}
+                                            <img src="{{ item.coverUrl }}" width="35" height="50">
                                             {{ item.author }}
-                                            {{ "<br>" }}
+                                            {{ " " }}
                                             {{ item.title }}
+                                            <br>
+                                            {% if item.toReturnAt is not null %}
+                                                <font color="red">Please return at:
+                                                    {{ item.toReturnAt|date("m/d/Y") }}
+                                                </font>
+                                            {% else %}
+                                                Reserved at:
+                                                {{ item.reservedAt|date("m/d/Y") }}
+                                            {% endif %}
                                             {{ "<br>" }}
                                         {% endfor %}
                                     {% endif %}

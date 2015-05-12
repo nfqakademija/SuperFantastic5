@@ -180,13 +180,39 @@ class OrderManager
         return $freeBooks;
     }
 
-    public function setOrderReturned($id)
+    /*
+     * set the given order as returned, and if there are any reservations
+     * for that description id, set the first one as taken
+     */
+    public function setOrderReturned($orderId)
     {
         $em = $this->doctrine->getManager();
-        $order = $em->getRepository('NfqLibraryBundle:Orders')->find($id);
+        $order = $em->getRepository('NfqLibraryBundle:Orders')->find($orderId);
         $order->setReturnedAt(new \DateTime('now'));
+        $reservationId = $this->getReservation($order->getDescriptionId());
+        if ($reservationId > 0) {
+            $order = $em->getRepository('NfqLibraryBundle:Orders')->find($reservationId);
+            $order->setTakenAt(new \DateTime('now'));
+            $order->setToReturnAt(new \DateTime(date('Y-m-d', strtotime("+30 days"))));
+        }
         $em->flush();
         return;
+    }
+
+    //Get the first untaken order (reservation) id for given description id
+    public function getReservation($descriptionId)
+    {
+        $reservedBooksQuery = $this->doctrine->getManager()->createQuery(
+            "SELECT o.id
+            FROM NfqLibraryBundle:Orders o
+            JOIN o.description d
+            WHERE o.takenAt is null
+            AND d.id = " . $descriptionId);
+        $result = $reservedBooksQuery->getResult();
+        if (count($result) > 0)
+            return $result[0];
+        else
+            return 0;
     }
 
 } 

@@ -1,14 +1,10 @@
 <?php
-
 namespace Nfq\LibraryBundle\Controller;
-
 use Nfq\LibraryBundle\BookDataSet;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-
 class BookListController extends Controller
 {
-
     public function booksAction($type_of_list = 'popular')
     {
         $books_rep = $this->getDoctrine()->getRepository('NfqLibraryBundle:Orders');
@@ -21,24 +17,22 @@ class BookListController extends Controller
             GROUP BY o.description';
         switch($type_of_list){
             case 'popular':
-              $query_str .= ' ORDER BY orderQnty DESC';
-              break;
+                $query_str .= ' ORDER BY orderQnty DESC';
+                break;
             case 'recent':
-              $query_str .= ' ORDER BY b.addedAt DESC';
-              break;
+                $query_str .= ' ORDER BY b.addedAt DESC';
+                break;
             case 'new':
-              $query_str .= ' ORDER BY d.year DESC';
-              break;
+                $query_str .= ' ORDER BY d.year DESC';
+                break;
         }
-         
-            
-        $query = $this->getDoctrine()->getManager()->createQuery($query_str);
 
+
+        $query = $this->getDoctrine()->getManager()->createQuery($query_str);
         $bookList = $query->getResult();
         $book_data_str = print_r($bookList, true);
         return $this->render('default/search.html.twig', array('books' => $book_data_str));
     }
-
     public function searchAction($str = '')
     {
         if (!isset($str) || $str === ''){
@@ -60,5 +54,4 @@ class BookListController extends Controller
         $book_data_str = print_r($bookList, true);
         return $this->render('default/search.html.twig', array('books' => $bookList));
     }
-
 } 
