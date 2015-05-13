@@ -46,12 +46,20 @@ class BookListController extends Controller
             $query = $this->getDoctrine()->getManager()->createQuery($query_str);
         } else {
             $query_str .= ' WHERE d.author LIKE :para OR d.title LIKE :para OR d.description LIKE :para OR d.publisher LIKE :para' ;
-            $query = $this->getDoctrine()->getManager()->createQuery($query_str);
+            //$query = $this->getDoctrine()->getManager()->createQuery($query_str);
+            $query = $this->get('doctrine.orm.entity_manager')->createQuery($query_str);
             $query->setParameter('para', '%' . $str . '%');
         }
-        //$bookList = $query->getResult();
+
         $bookList = $query->getArrayResult();
-        $book_data_str = print_r($bookList, true);
-        return $this->render('default/search.html.twig', array('books' => $bookList));
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $bookList,
+            $request->query->get('page', 1)/*page number*/,
+            6/*limit per page*/
+        );
+
+        return $this->render('default/search.html.twig', array( 'keyword'=> $str, 'books' => $bookList, 'pagination' => $pagination));
     }
 } 

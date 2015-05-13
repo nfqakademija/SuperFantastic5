@@ -3,34 +3,41 @@
     {% if books is empty %}
         <h1>Not found. Try different keyword</h1>
     {% endif %}
-
-    <div class="row">
-    {% for item in books %}
-    <div class="col-md-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading"></div>
-            <div class="panel-body fixed-panel">
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="container image-container">
-                            <img src="{{ item.coverUrl }}" class="img-responsive">
+    <div class="count">
+        <h1>By keyword "{{ keyword }}" found: {{ pagination.getTotalItemCount }}</h1>
+    </div>
+     <div class="row">
+        {% for item in pagination %}
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body fixed-panel">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="container image-container">
+                                    <img src="{{ item.coverUrl }}" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <b>Author: </b>{{ item.author }}<br>
+                                <b>Title: </b> <a href="/book/{{ item.id }}">{{ item.title }}</a><br>
+                                <b>Language: </b>{{ item.language }}<br>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-2">
-                        <b>Author: </b>{{ item.author }}<br>
-                        <b>Title: </b> <a href="/book/{{ item.id }}">{{ item.title }}</a><br>
-                        <b>Language: </b>{{ item.language }}<br>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right">
+                            <a href="/book/{{ item.id }}" class="btn btn-primary">READ MORE</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="panel-footer clearfix">
-                <div class="pull-right">
-                    <a href="/book/{{ item.id }}" class="btn btn-primary">READ MORE</a>
-                </div>
-            </div>
-        </div>
-    </div>
         {% endfor %}
+     </div>
+    {# display navigation #}
+    <div class="navigation">
+        <ul class="pagination">
+            <li>{{ knp_pagination_render(pagination) }}</li>
+        </ul>
     </div>
-
 {% endblock %}
