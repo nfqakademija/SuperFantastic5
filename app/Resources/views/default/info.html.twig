@@ -7,10 +7,10 @@
         <div class="panel-body">
         <!--  <div class="container-fluid"> -->
             <div class="row">
-                <div class="col-md-3" >
-                    <img src="{{ item.coverUrl }}" height="300" width="100%">
+                <div class="col-md-4" >
+                    <img src="{{ item.coverUrl }}" height="200" width="70%">
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <h3>{{ item.title }}</h3>
                     <h5>{{ item.author }}</h5>
                     {{ "<br>" }}
@@ -23,15 +23,18 @@
                     <b>Pages: </b>{{ item.pageNo }}<br>
                     <b>ISBN: </b>{{ item.isbn }} <br>
                     <b>Available books: </b>{{ free }}
-                    <div class="pull-right">
-                        {% if free == 0 %}
-                            <a href="/order/{{ item.id }}" class="btn btn-danger">RESERVE</a>
-                        {% else %}
-                            <a href="/order/{{ item.id }}" class="btn btn-primary">TAKE A BOOK</a>
-                        {% endif %}
-                        <button onclick="goBack()" class="btn btn-default">Go Back</button>
-                    </div>
+
                 </div>
+            </div>
+        </div>
+        <div class="panel-footer clearfix">
+            <div class="pull-right">
+                {% if free == 0 %}
+                    <a href="/order/{{ item.id }}" class="btn btn-danger">RESERVE</a>
+                {% else %}
+                    <a href="/order/{{ item.id }}" class="btn btn-primary">TAKE A BOOK</a>
+                {% endif %}
+                <button onclick="goBack()" class="btn btn-default">Go Back</button>
             </div>
         </div>
     </div>
