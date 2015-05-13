@@ -16,7 +16,12 @@ body {
 .col-md-2 {
     width: 45%;
 }
-
+.col-md-1 {
+    width: 30%;
+}
+.col-md-3 {
+    width: 70%;
+}
 .col-xs-2 {
     width: 55%;
 }
