@@ -1,27 +1,36 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    UNRETURNED ORDERS:
+
     {% if unreturnedBooks is defined %}
-        <table border ="2">
-            <tr>
-                <td>Returned</td>
-                <td>Id</td>
-                <td>Firstname</td>
-                <td>Lastname</td>
-                <td>Book title</td>
-                <td>To return at</td>
-            </tr>
-            {% for item in unreturnedBooks %}
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td> {{ item.id }}
-                    <td> {{ item.firstname }} </td>
-                    <td> {{ item.lastname }} </td>
-                    <td> {{ item.title }} </td>
-                    <td> {{ item.toReturnAt|date("m/d/Y") }} </td>
-                </tr>
-            {% endfor %}
-        </table>
-        <button type="button">Save</button>
+        <div class="panel panel-primary">
+            <div class="panel-heading">UNRETURNED ORDERS:</div>
+            <div class="panel-body">
+                <table class="table" border ="2">
+                    <tr>
+                        <td>Returned</td>
+                        <td>Id</td>
+                        <td>Firstname</td>
+                        <td>Lastname</td>
+                        <td>Book title</td>
+                        <td>To return at</td>
+                    </tr>
+                    {% for item in unreturnedBooks %}
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td> {{ item.id }}
+                            <td> {{ item.firstname }} </td>
+                            <td> {{ item.lastname }} </td>
+                            <td> {{ item.title }} </td>
+                            <td> {{ item.toReturnAt|date("m/d/Y") }} </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-left">
+                    <a  class="btn btn-primary">SAVE</a>
+                </div>
+            </div>
+        </div>
     {% endif %}
 {% endblock %}

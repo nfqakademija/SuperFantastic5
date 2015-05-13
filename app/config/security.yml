@@ -25,6 +25,7 @@ security:
     # for specific sections of your app
     firewalls:
         main:
+           # pattern: ^/
             pattern: ^/
             form_login:
                 provider: fos_userbundle
@@ -54,7 +55,9 @@ security:
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
-
+        secured_area:
+                    pattern:    ^/
+                    anonymous:  ~
     # with these settings you can restrict or allow access for different parts
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/cookbook/security/access_control.html
@@ -63,4 +66,5 @@ security:
             - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/admin, roles: ROLE_ADMIN }
-
+            #- { path: ^/css, role: IS_AUTHENTICATED_ANONYMOUSLY }
+            #- { path: ^/, roles: ROLE_USER }
