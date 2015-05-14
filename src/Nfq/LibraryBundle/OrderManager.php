@@ -140,7 +140,8 @@ class OrderManager
             JOIN o.reader r
             JOIN o.description d
             WHERE r.id =" . $userId . "
-            AND o.returnedAt IS NULL");
+            AND o.returnedAt IS NULL
+            ORDER BY o.toReturnAt");
 
         return $query->getResult();
     }

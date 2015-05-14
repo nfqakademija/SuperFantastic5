@@ -8,8 +8,6 @@
 
 namespace Nfq\LibraryBundle;
 
-use Nfq\LibraryBundle\BookData;
-
 class BookParser
 {
     private $provider;

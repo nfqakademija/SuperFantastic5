@@ -2,30 +2,26 @@ nfq_library_root:
     path:     /
     defaults: { _controller: NfqLibraryBundle:Homepage:index }
 
-show_orders:
-    path:     /orders
-    defaults: { _controller: NfqLibraryBundle:Homepage:showOrders }
-
 nfq_library_homepage:
     path:     /home
     defaults: { _controller: NfqLibraryBundle:Homepage:index }
 
 newBooks:
     path:     /new
-    defaults: { _controller: NfqLibraryBundle:Homepage:newBooks }
+    defaults: { _controller: NfqLibraryBundle:BookList:newBooks }
 
 popularBooks:
     path:     /popular
-    defaults: { _controller: NfqLibraryBundle:Homepage:popularBooks }
+    defaults: { _controller: NfqLibraryBundle:BookList:popularBooks }
 
 bookinfo:
     path:     /book/{id}
     defaults: { _controller: NfqLibraryBundle:BookInfo:index }
-    
+
 booklist_books:
     path:     /books
     defaults: { _controller: NfqLibraryBundle:BookList:books }
-    
+
 booklist_books_type:
     path:     /books/{type_of_list}
     defaults: { _controller: NfqLibraryBundle:BookList:books }
@@ -40,7 +36,7 @@ booklist_search_keyword:
 
 add_order:
     path:     /order/{descriptionId}
-    defaults: { _controller: NfqLibraryBundle:BookInfo:AddOrder }
+    defaults: { _controller: NfqLibraryBundle:Order:AddOrder }
 
 admin_panel:
     path:     /admin
