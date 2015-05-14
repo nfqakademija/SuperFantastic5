@@ -1,4 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    Cia det patikrinima ar prisijunges. Jei taip tai naujausios knygos, jei ne - login
+    <div class="panel panel-primary">
+    <div class="panel-heading"></div>
+        <div class="panel-body">
+            <a href="/new" class="btn btn-primary">The Newest Books</a>
+            <a href="/popular" class="btn btn-primary">The Most Popular Books</a>
+            <a href="/search" class="btn btn-primary">Avaible books</a>
+            <a href="/profile" class="btn btn-primary">Profile Page</a>
+            <a href="/logout" class="btn btn-danger">LogOut</a>
+        </div>
+        <div class="panel-footer clearfix">
+        </div>
+    </div>
+</div>
 {% endblock %}
