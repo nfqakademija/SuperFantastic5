@@ -2,6 +2,10 @@ nfq_library_root:
     path:     /
     defaults: { _controller: NfqLibraryBundle:Homepage:index }
 
+show_orders:
+    path:     /orders
+    defaults: { _controller: NfqLibraryBundle:Homepage:showOrders }
+
 nfq_library_homepage:
     path:     /home
     defaults: { _controller: NfqLibraryBundle:Homepage:index }
@@ -37,10 +41,6 @@ booklist_search_keyword:
 add_order:
     path:     /order/{descriptionId}
     defaults: { _controller: NfqLibraryBundle:BookInfo:AddOrder }
-
-show_orders:
-    path:     /orders/{userId}
-    defaults: { _controller: NfqLibraryBundle:BookInfo:getOrders }
 
 admin_panel:
     path:     /admin

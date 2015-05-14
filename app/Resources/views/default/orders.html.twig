@@ -1,0 +1,47 @@
+<div class="orders">
+    {% if is_granted("ROLE_USER") %}
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                           aria-expanded="true" aria-controls="collapseOne">
+                            SEE MY ORDERS
+                        </a>
+
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse out" role="tabpanel"
+                     aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <div class="row">
+                            {% if orders is defined %}
+                                {% for item in orders %}
+                                    <div class="col-md-4">
+                                        <div class="col-md-1">
+                                            <div class="container image-container">
+                                                <img src="{{ item.coverUrl }}" width="35" height="50">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <b>Author: </b>{{ item.author }}<br>
+                                            <b>Title: </b> {{ item.title }}<br>
+                                            {% if item.toReturnAt is not null %}
+                                                <font color="red"><b>Please return at:</b>
+                                                    {{ item.toReturnAt|date("m/d/Y") }}
+                                                </font>
+                                            {% else %}
+                                                <b>Reserved at:</b>
+                                                {{ item.reservedAt|date("m/d/Y") }}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>

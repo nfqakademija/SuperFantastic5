@@ -19,6 +19,15 @@ class HomepageController extends Controller
         return $this->render('default/homepage.html.twig');
     }
 
+    public function showOrdersAction()
+    {
+        $om = new OrderManager($this->getDoctrine());
+        $um = new UserManager($this->get('security.context'));
+        $userId = $um->getUserId();
+
+        return $this->render('default/orders.html.twig', array( "orders" => $om->getOrders($userId)));
+    }
+
     public function newBooksAction()
     {
         $om = new OrderManager($this->getDoctrine());
