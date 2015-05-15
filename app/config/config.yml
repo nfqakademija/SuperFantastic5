@@ -83,5 +83,5 @@ swiftmailer:
     transport: gmail
     host:      465
     username:  username
-    password:  password
+    password:  passwordz
     spool:     { type: memory }
