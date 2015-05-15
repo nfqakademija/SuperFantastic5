@@ -6,25 +6,17 @@ nfq_library_homepage:
     path:     /home
     defaults: { _controller: NfqLibraryBundle:Homepage:index }
 
-newBooks:
-    path:     /new
-    defaults: { _controller: NfqLibraryBundle:BookList:newBooks }
+email:
+    path:     /mail
+    defaults: { _controller: NfqLibraryBundle:Admin:Email }
 
-popularBooks:
-    path:     /popular
-    defaults: { _controller: NfqLibraryBundle:BookList:popularBooks }
+newBooks:
+    path:     /list/{type}
+    defaults: { _controller: NfqLibraryBundle:BookList:list }
 
 bookinfo:
     path:     /book/{id}
     defaults: { _controller: NfqLibraryBundle:BookInfo:index }
-
-booklist_books:
-    path:     /books
-    defaults: { _controller: NfqLibraryBundle:BookList:books }
-
-booklist_books_type:
-    path:     /books/{type_of_list}
-    defaults: { _controller: NfqLibraryBundle:BookList:books }
 
 booklist_search:
     path:     /search

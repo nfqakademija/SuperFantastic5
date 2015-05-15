@@ -11,6 +11,7 @@ namespace Nfq\LibraryBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nfq\LibraryBundle\OrderManager;
 use Nfq\LibraryBundle\UserManager;
+use Symfony\Component\HttpFoundation\Response;
 
 class OrderController extends Controller
 {

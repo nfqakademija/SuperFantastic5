@@ -33,24 +33,4 @@ class BookInfoController extends Controller
 
         return $query->getResult();
     }
-
-    //add an order/reservation to the user by description id
-    public function addOrderAction($descriptionId)
-    {
-        $om = new OrderManager($this->getDoctrine());
-        $bookAmount = $om->getFreeBooksAmount($descriptionId);
-        $um = new UserManager($this->get('security.context'));
-        $userId = $um->getUserId();
-
-        $om = new OrderManager($this->getDoctrine());
-        if ($bookAmount) {
-            $id = $om->addOrder($descriptionId, $userId);
-        } else {
-            $id = $om->addReservation($descriptionId, $userId);
-        }
-        if ($id > 0)
-            return new Response("Created new order id " . $id);
-        else
-            return new Response("An order like this already exists");
-    }
 }
