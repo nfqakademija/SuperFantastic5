@@ -7,7 +7,7 @@
             <div class="panel-body">
                 <table class="table" border ="2">
                     <tr>
-                        <td>Returned</td>
+                        <td>Return</td>
                         <td>Id</td>
                         <td>Firstname</td>
                         <td>Lastname</td>
@@ -16,7 +16,7 @@
                     </tr>
                     {% for item in unreturnedBooks %}
                         <tr>
-                            <td><input type="checkbox"></td>
+                            <td><a href="/admin/return/{{ item.id }}" class="btn btn-default">Return</a></td>
                             <td> {{ item.id }}
                             <td> {{ item.firstname }} </td>
                             <td> {{ item.lastname }} </td>

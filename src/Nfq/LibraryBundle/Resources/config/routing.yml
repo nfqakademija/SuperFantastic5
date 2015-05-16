@@ -6,10 +6,6 @@ nfq_library_homepage:
     path:     /home
     defaults: { _controller: NfqLibraryBundle:Homepage:index }
 
-email:
-    path:     /mail
-    defaults: { _controller: NfqLibraryBundle:Admin:Email }
-
 newBooks:
     path:     /list/{type}
     defaults: { _controller: NfqLibraryBundle:BookList:list }
@@ -33,3 +29,9 @@ add_order:
 admin_panel:
     path:     /admin
     defaults: { _controller: NfqLibraryBundle:Admin:Index }
+
+return_order:
+    path:     /admin/return/{orderId}
+    defaults: { _controller: NfqLibraryBundle:Admin:return }
+
+

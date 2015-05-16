@@ -185,7 +185,7 @@ class OrderManager
      * set the given order as returned, and if there are any reservations
      * for that description id, set the first one as taken
      */
-    public function setOrderReturned($orderId)
+    public function setOrderReturned($orderId, $mailer)
     {
         $em = $this->doctrine->getManager();
         $order = $em->getRepository('NfqLibraryBundle:Orders')->find($orderId);
@@ -196,6 +196,7 @@ class OrderManager
             $order->setTakenAt(new \DateTime('now'));
             $order->setToReturnAt(new \DateTime(date('Y-m-d', strtotime("+30 days"))));
         }
+        $this->sendEmail($order->getReader(), $order->getDescription(), $mailer);
         $em->flush();
         return;
     }
@@ -216,4 +217,16 @@ class OrderManager
             return 0;
     }
 
-} 
+    public function sendEmail($user, $book, $mailer)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Your order is ready')
+            ->setFrom('super5lib@gmail.com')
+            ->setTo($user->getEmail())
+            ->setBody('Hi, ' . trim($user->getFirstName()) . PHP_EOL . '
+            Your order for the book ' . $book->getTitle() . ' is ready. Please come by to pick it up' . PHP_EOL . '
+            SuperFantastic5 library.');
+        $mailer->send($message);
+    }
+}
+

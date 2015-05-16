@@ -30,9 +30,9 @@
         <div class="panel-footer clearfix">
             <div class="pull-right">
                 {% if free == 0 %}
-                    <a href="/order/{{ item.id }}" class="btn btn-danger">RESERVE</a>
+                    <a href="/order/{{ item.id }}" class="btn btn-danger">Reserve</a>
                 {% else %}
-                    <a href="/order/{{ item.id }}" class="btn btn-primary">TAKE A BOOK</a>
+                    <a href="/order/{{ item.id }}" class="btn btn-primary">Order</a>
                 {% endif %}
                 <button onclick="goBack()" class="btn btn-default">Go Back</button>
             </div>

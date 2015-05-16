@@ -20,4 +20,12 @@ class AdminController extends Controller
         return $this->render('default/admin.html.twig', array('unreturnedBooks' => $unreturnedBooks));
     }
 
+    public function returnAction($orderId)
+    {
+        $om = new OrderManager($this->getDoctrine());
+        $om->setOrderReturned($orderId, $this->get('mailer'));
+        $unreturnedBooks = $om->getUnreturnedOrders();
+        return $this->render('default/admin.html.twig', array('unreturnedBooks' => $unreturnedBooks));
+    }
+
 } 

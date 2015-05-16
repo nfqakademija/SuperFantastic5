@@ -8,6 +8,7 @@
 
 namespace Nfq\LibraryBundle\Controller;
 
+use Nfq\LibraryBundle\BookManager;
 use Nfq\LibraryBundle\OrderManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,19 +19,11 @@ class BookInfoController extends Controller
     public function indexAction($id)
     {
         $om = new OrderManager($this->getDoctrine());
-        $books = $this->getBookInfo($id);
+        $bm = new BookManager($this->getDoctrine());
+        $books = $bm->getBookInfo($id);
         $bookAmount = $om->getFreeBooksAmount($id);
 
         return $this->render('default/info.html.twig', array('books' => $books, 'free' => $bookAmount));
     }
 
-    private function getBookInfo($id)
-    {
-        $descriptionsRepo = $this->getDoctrine()->getRepository('NfqLibraryBundle:Descriptions');
-        $query = $descriptionsRepo->createQueryBuilder('d')
-            ->where('d.id = ' . $id)
-            ->getQuery();
-
-        return $query->getResult();
-    }
 }

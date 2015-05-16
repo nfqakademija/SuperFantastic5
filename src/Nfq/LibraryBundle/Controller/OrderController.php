@@ -11,7 +11,7 @@ namespace Nfq\LibraryBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nfq\LibraryBundle\OrderManager;
 use Nfq\LibraryBundle\UserManager;
-use Symfony\Component\HttpFoundation\Response;
+use Nfq\LibraryBundle\BookManager;
 
 class OrderController extends Controller
 {
@@ -27,6 +27,9 @@ class OrderController extends Controller
     //add an order/reservation to the user by description id
     public function addOrderAction($descriptionId)
     {
+        $bm = new BookManager($this->getDoctrine());
+        $books = $bm->getBookInfo($descriptionId);
+
         $om = new OrderManager($this->getDoctrine());
         $bookAmount = $om->getFreeBooksAmount($descriptionId);
         $um = new UserManager($this->get('security.context'));
@@ -34,13 +37,12 @@ class OrderController extends Controller
 
         $om = new OrderManager($this->getDoctrine());
         if ($bookAmount) {
-            $id = $om->addOrder($descriptionId, $userId);
+            $om->addOrder($descriptionId, $userId);
         } else {
-            $id = $om->addReservation($descriptionId, $userId);
+            $om->addReservation($descriptionId, $userId);
         }
-        if ($id)
-            return new Response("Created new order id " . $id);
-        else
-            return new Response("An order like this already exists");
+        $bookAmount = $om->getFreeBooksAmount($descriptionId);
+
+        return $this->render('default/info.html.twig', array('books' => $books, 'free' => $bookAmount));
     }
 } 

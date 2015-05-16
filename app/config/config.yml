@@ -82,6 +82,6 @@ doctrine:
 swiftmailer:
     transport: gmail
     host:      465
-    username:  username
-    password:  passwordz
+    username:  super5lib
+    password:  super5password
     spool:     { type: memory }
