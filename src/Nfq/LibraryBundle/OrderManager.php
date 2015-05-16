@@ -195,8 +195,8 @@ class OrderManager
             $order = $em->getRepository('NfqLibraryBundle:Orders')->find($reservationId);
             $order->setTakenAt(new \DateTime('now'));
             $order->setToReturnAt(new \DateTime(date('Y-m-d', strtotime("+30 days"))));
+            $this->sendEmail($order->getReader(), $order->getDescription(), $mailer);
         }
-        $this->sendEmail($order->getReader(), $order->getDescription(), $mailer);
         $em->flush();
         return;
     }
