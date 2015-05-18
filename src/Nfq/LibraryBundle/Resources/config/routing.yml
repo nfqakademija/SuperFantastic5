@@ -34,4 +34,6 @@ return_order:
     path:     /admin/return/{orderId}
     defaults: { _controller: NfqLibraryBundle:Admin:return }
 
-
+add_book:
+    path:     /add/{isbn}
+    defaults: { _controller: NfqLibraryBundle:Admin:addBook }

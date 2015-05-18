@@ -1,5 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">Add book by ISBN:</div>
+        <div class="panel-body">
+            <form class="navbar-form" action="/add" method="GET">
+                <input type="text" size="75" name="isbn"/>
+                <input class="btn btn-default" type="submit" id="submit" value="ADD BOOK"/>
+            </form>
+        </div>
+        <div class="panel-footer clearfix">
+        </div>
+    </div>
+
 
     {% if unreturnedBooks is defined %}
         <div class="panel panel-primary">
@@ -27,9 +39,6 @@
                 </table>
             </div>
             <div class="panel-footer clearfix">
-                <div class="pull-left">
-                    <a  class="btn btn-primary">SAVE</a>
-                </div>
             </div>
         </div>
     {% endif %}
