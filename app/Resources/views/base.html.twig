@@ -40,10 +40,10 @@
                 <a href="/"><img src="http://oi60.tinypic.com/fohu0m.jpg" height="60" width="60"></img></a>
             </ul>
             {% if is_granted("ROLE_USER") %}
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="/list/popular">Most Popular Books</a></li>
-                <li><a href="/list/new">Newest Books</a></li>
-            </ul>
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="/list/popular">Most Popular Books</a></li>
+                    <li><a href="/list/new">Newest Books</a></li>
+                </ul>
             {% endif %}
             <ul class="nav navbar-nav navbar-right">
                 {% if is_granted("ROLE_USER") %}
@@ -59,10 +59,10 @@
                 {% endif %}
             </ul>
             {% if is_granted("ROLE_USER") %}
-            <form class="navbar-form navbar-left" action="/search" method="GET">
-                <input type="text" size="75" id="keyword2" name="str"/>
-                <input class="btn btn-default" type="submit" id="submit" value="Search"/>
-            </form>
+                <form class="navbar-form navbar-left" action="/search" method="GET">
+                    <input type="text" size="75" id="keyword2" name="str"/>
+                    <input class="btn btn-default" type="submit" id="submit" value="Search"/>
+                </form>
             {% endif %}
         </div>
     </div>

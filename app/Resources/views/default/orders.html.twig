@@ -33,7 +33,7 @@
                                             {% else %}
                                                 <b>Reserved at:</b>
                                                 {{ item.reservedAt|date("m/d/Y") }}<br>
-                                                <a href="" class="btn btn-danger btn-xs" >Cancel reservation</a>
+                                                <a onclick="cancelReservation({{ item.id }})" class="btn btn-danger btn-xs" >Cancel reservation</a>
                                             {% endif %}
                                         </div>
                                     </div>

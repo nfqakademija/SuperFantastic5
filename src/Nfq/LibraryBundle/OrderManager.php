@@ -135,7 +135,7 @@ class OrderManager
     public function getOrders($userId)
     {
         $query = $this->doctrine->getManager()->createQuery(
-            "SELECT d.author, d.title, d.coverUrl, o.reservedAt, o.takenAt, o.toReturnAt
+            "SELECT o.id, d.author, d.title, d.coverUrl, o.reservedAt, o.takenAt, o.toReturnAt
             FROM NfqLibraryBundle:Orders o
             JOIN o.reader r
             JOIN o.description d
@@ -227,6 +227,17 @@ class OrderManager
             Your order for the book ' . $book->getTitle() . ' is ready. Please come by to pick it up' . PHP_EOL . '
             SuperFantastic5 library.');
         $mailer->send($message);
+    }
+
+    public function cancelReservation($orderId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $order = $em->getRepository('NfqLibraryBundle:Orders')->find($orderId);
+        if ($order->getTakenAt() == null) {
+            $em->remove($order);
+            $em->flush();
+        }
+
     }
 }
 
