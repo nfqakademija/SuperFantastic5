@@ -4,7 +4,6 @@ namespace Nfq\LibraryBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Nfq\LibraryBundle\Entity\Tags;
 use Nfq\LibraryBundle\Entity\Users;
 use Nfq\LibraryBundle\Entity\Descriptions;
 use Nfq\LibraryBundle\Entity\Books;
@@ -17,16 +16,6 @@ class LoadUsersData implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $tagdata = [
-            "mokslinė fantastika",
-            "politinė filosofija",
-            "C++",
-            "php",
-            "grožinė literatūra",
-            "istorija",
-            "filosofija"
-        ];
-
         $userdata = [
             [
                 'firstname'   => 'Vardenis',
@@ -58,8 +47,7 @@ class LoadUsersData implements FixtureInterface
                 'publisher'   => 'Kronta',
                 'year'        => '2011-05-05',
                 'pageno'      => 328,
-                'isbn'        => '9786094010446',
-                'tags'        => [4]
+                'isbn'        => '9786094010446'
             ],
             [
                 'author'      => 'Juozas Erlickas',
@@ -70,8 +58,7 @@ class LoadUsersData implements FixtureInterface
                 'publisher'   => 'Tyto alba',
                 'year'        => '2004',
                 'pageno'      => 150,
-                'isbn'        => '9789986163886',
-                'tags'        => [4]
+                'isbn'        => '9789986163886'
             ],
             [
                 'author'      => 'Arvydas Šliogeris',
@@ -82,8 +69,7 @@ class LoadUsersData implements FixtureInterface
                 'publisher'   => 'Rodopi',
                 'year'        => '2009',
                 'pageno'      => 180,
-                'isbn'        => '9789042025646',
-                'tags'        => [6]
+                'isbn'        => '9789042025646'
             ],
             [
                 'author'      => 'Ray Bradbury',
@@ -100,8 +86,7 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
                 'publisher'   => 'Simon & Schuster',
                 'year'        => '2013',
                 'pageno'      => 132,
-                'isbn'        => '9781451673319',
-                'tags'        => [0, 4]
+                'isbn'        => '9781451673319'
             ]
         ];
 
@@ -199,13 +184,6 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
             ]
         ];
 
-        $alltags = [];
-        foreach ($tagdata as $tag) {
-            $alltags[] = new Tags();
-            $lastitem = $alltags[count($alltags) - 1];
-            $lastitem->setTag($tag);
-        }
-
         $allusers = [];
         foreach ($userdata as $user) {
             $allusers[] = new Users();
@@ -230,9 +208,6 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
             $lastitem->setYear($description['year']);
             $lastitem->setPageNo($description['pageno']);
             $lastitem->setIsbn($description['isbn']);
-            foreach ($description['tags'] as $tagid) {
-                $lastitem->addTag($alltags[$tagid]);
-            }
         }
 
         $allbooks = [];
@@ -261,7 +236,7 @@ Bradbury’s powerful and poetic prose combines with uncanny insight into the po
             $lastitem->setReturnedAt($value);
         }
 
-        $allitems = array_merge($alltags, $allusers, $alldescriptions, $allbooks, $allorders);
+        $allitems = array_merge($allusers, $alldescriptions, $allbooks, $allorders);
         foreach ($allitems as $item) {
             $manager->persist($item);
         }

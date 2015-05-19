@@ -70,21 +70,4 @@ Nfq\LibraryBundle\Entity\Descriptions:
             length: 13
             fixed: false
             comment: ''
-    manyToMany:
-        tag:
-            targetEntity: Tags
-            cascade: {  }
-            mappedBy: null
-            inversedBy: description
-            joinTable:
-                name: book_tags
-                joinColumns:
-                    -
-                        name: description_id
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    -
-                        name: tag_id
-                        referencedColumnName: id
-            orderBy: null
     lifecycleCallbacks: {  }

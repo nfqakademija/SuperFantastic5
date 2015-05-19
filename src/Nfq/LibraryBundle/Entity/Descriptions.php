@@ -60,19 +60,6 @@ class Descriptions
     private $isbn;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tag;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Get id
      *
      * @return integer 
@@ -289,36 +276,4 @@ class Descriptions
         return $this->isbn;
     }
 
-    /**
-     * Add tag
-     *
-     * @param \Nfq\LibraryBundle\Entity\Tags $tag
-     * @return Descriptions
-     */
-    public function addTag(\Nfq\LibraryBundle\Entity\Tags $tag)
-    {
-        $this->tag[] = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Remove tag
-     *
-     * @param \Nfq\LibraryBundle\Entity\Tags $tag
-     */
-    public function removeTag(\Nfq\LibraryBundle\Entity\Tags $tag)
-    {
-        $this->tag->removeElement($tag);
-    }
-
-    /**
-     * Get tag
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTag()
-    {
-        return $this->tag;
-    }
 }

@@ -8,9 +8,7 @@
 
 namespace Nfq\LibraryBundle\Controller;
 
-use Nfq\LibraryBundle\BookData;
-use Nfq\LibraryBundle\BookInterface;
-use Nfq\LibraryBundle\BookParser;
+use Nfq\LibraryBundle\Entity\Books;
 use Nfq\LibraryBundle\Entity\Descriptions;
 use Nfq\LibraryBundle\OrderManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -32,26 +30,25 @@ class AdminController extends Controller
         return $this->render('default/admin.html.twig', array('unreturnedBooks' => $unreturnedBooks));
     }
 
-    public function addBookAction ($isbn = '')
+    public function addBookAction($isbn = '')
     {
-        if (!isset($isbn) || $isbn === ''){
+        if (!isset($isbn) || $isbn === '') {
             $request = $this->getRequest();
-            switch ($request->getMethod()){
-            case 'GET':
-                $isbn = $request->query->get('isbn');
-                break;
-            case 'POST':
-                $isbn = $request->request->get('isbn');
-                break;
+            switch ($request->getMethod()) {
+                case 'GET':
+                    $isbn = $request->query->get('isbn');
+                    break;
+                case 'POST':
+                    $isbn = $request->request->get('isbn');
+                    break;
             }
-            
+
             // Šita eilutė redirektina /add?isbn=9788496284449 į /add/9788496284449
             // tai papildomas apkrovimas
             // Jeigu to nereikia, užkomentuok sekančią eilutę
             return $this->redirect("/add/$isbn", 301);
         }
-        
-        
+
         $parser = $this->container->get('book_parser');
         $book = $parser->getBookInfo($isbn);
         $description = new Descriptions();
@@ -63,9 +60,24 @@ class AdminController extends Controller
         $description->setDescription($book->getDescription());
         $description->setPageNo($book->getPageNo());
         $description->setPublisher($book->getPublisher());
+
         $em = $this->getDoctrine()->getManager();
-        $em->persist($description);
-        $em->flush();
+        $existingDescription = $em->getRepository('NfqLibraryBundle:Descriptions')->findOneBy(array('isbn' => $isbn));
+        $book = new Books();
+        $book->setAddedAt(new \DateTime('now'));
+        if (!count($existingDescription)) {
+            $em->persist($description);
+            $book->setDescription($description);
+            if ($description->getAuthor() != "" && $description->getTitle() != "") {
+                $em->persist($book);
+                $em->flush();
+            }
+        } else {
+            $book->setDescription($existingDescription);
+            $em->persist($book);
+            $em->flush();
+        }
+
         return $this->render('default/admin.html.twig');
     }
 } 
