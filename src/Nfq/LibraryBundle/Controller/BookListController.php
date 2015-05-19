@@ -70,11 +70,20 @@ class BookListController extends Controller
             ");
         }
         $bookArray = array();
-        foreach ($query->setMaxResults(6)->getResult() as $books) {
+        foreach ($query->setMaxResults(60)->getResult() as $books) {
             array_push($bookArray, $books[0]);
         }
 
-        return $this->render('default/index.html.twig', array(
-            "books" => $bookArray));
+     /*   return $this->render('default/index.html.twig', array(
+            "books" => $bookArray));*/
+        $request = $this->getRequest();
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $bookArray,
+            $request->query->get('page', 1)/*page number*/,
+            6/*limit per page*/
+        );
+
+        return $this->render('default/index.html.twig', array('pagination' => $pagination));
     }
 } 

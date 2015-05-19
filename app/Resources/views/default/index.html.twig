@@ -1,33 +1,38 @@
-    {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <div class="row">
-    {% for item in books %}
-        <div class="col-md-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading"></div>
-                <div class="panel-body fixed-panel">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="container image-container">
-                                <img src="{{ item.description.coverUrl }}" class="img-responsive">
+        {% for item in pagination %}
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body fixed-panel">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="container image-container">
+                                    <img src="{{ item.description.coverUrl }}" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <b>Author: </b>{{ item.description.author }}<br>
+                                <b>Title: </b> <a
+                                        href="/book/{{ item.description.id }}">{{ item.description.title }}</a><br>
+                                <b>Language: </b>{{ item.description.language }}<br>
                             </div>
                         </div>
-                        <div class="col-xs-2">
-                            <b>Author: </b>{{ item.description.author }}<br>
-                            <b>Title: </b> <a href="/book/{{ item.description.id }}">{{ item.description.title }}</a><br>
-                            <b>ISBN: </b>{{ item.description.isbn }}<br>
-                            <b>Language: </b>{{ item.description.language }}<br>
-                        </div>
                     </div>
-                </div>
-                <div class="panel-footer clearfix">
-                    <div class="pull-right">
-                        <a href="/book/{{ item.description.id }}" class="btn btn-primary">READ MORE</a>
+                    <div class="panel-footer clearfix">
+                        <div class="pull-right">
+                            <a href="/book/{{ item.description.id }}" class="btn btn-primary">READ MORE</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
+    <div class="navigation">
+        <ul class="pagination">
+            <li>{{ knp_pagination_render(pagination) }}</li>
+        </ul>
     </div>
 {% endblock %}
