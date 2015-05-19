@@ -41,3 +41,7 @@ add_book_get:
 add_book:
     path:     /add/{isbn}
     defaults: { _controller: NfqLibraryBundle:Admin:addBook }
+    
+show_orders:
+    path:     /showOrders
+    defaults: { _controller: NfqLibraryBundle:Order:showOrders }
