@@ -12,12 +12,28 @@ class BookListController extends Controller
             $request = $this->getRequest();
             $str = $request->query->get('str');
         }
-        $query_str = 'SELECT d.id, d.author, d.title, d.coverUrl, d.language, d.description, d.publisher, d.year, d.pageNo, d.isbn
-            FROM NfqLibraryBundle:Descriptions d';
+        $query_str = 
+            'SELECT 
+                d.id, 
+                d.author, 
+                d.title, 
+                d.coverUrl, 
+                d.language, 
+                d.description, 
+                d.publisher, 
+                d.year, 
+                d.pageNo, 
+                d.isbn
+            FROM NfqLibraryBundle:Descriptions d ';
         if (empty($str)) {
             $query = $this->getDoctrine()->getManager()->createQuery($query_str);
         } else {
-            $query_str .= ' WHERE d.author LIKE :para OR d.title LIKE :para OR d.description LIKE :para OR d.publisher LIKE :para';
+            $query_str .= 
+            'WHERE d.author LIKE :para 
+                 OR d.title LIKE :para 
+                 OR d.description LIKE :para 
+                 OR d.publisher LIKE :para 
+                 OR d.isbn LIKE :para';
             $query = $this->get('doctrine.orm.entity_manager')->createQuery($query_str);
             $query->setParameter('para', '%' . $str . '%');
         }

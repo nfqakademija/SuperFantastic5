@@ -32,8 +32,26 @@ class AdminController extends Controller
         return $this->render('default/admin.html.twig', array('unreturnedBooks' => $unreturnedBooks));
     }
 
-    public function addBookAction ($isbn)
+    public function addBookAction ($isbn = '')
     {
+        if (!isset($isbn) || $isbn === ''){
+            $request = $this->getRequest();
+            switch ($request->getMethod()){
+            case 'GET':
+                $isbn = $request->query->get('isbn');
+                break;
+            case 'POST':
+                $isbn = $request->request->get('isbn');
+                break;
+            }
+            
+            // Šita eilutė redirektina /add?isbn=9788496284449 į /add/9788496284449
+            // tai papildomas apkrovimas
+            // Jeigu to nereikia, užkomentuok sekančią eilutę
+            return $this->redirect("/add/$isbn", 301);
+        }
+        
+        
         $parser = $this->container->get('book_parser');
         $book = $parser->getBookInfo($isbn);
         $description = new Descriptions();
