@@ -10,7 +10,7 @@
 /composer.phar
 /vendor/
 /web/bundles/
-
+/_misc/
 /.idea/
 /nbproject/
 *.db
